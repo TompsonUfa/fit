@@ -10,7 +10,7 @@ use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return redirect('/admin/directions');
-});
+})->name('admin');
 
 Route::get('/directions', [DirectionsController::class, 'show'])->name('directions');
 Route::post('/directions', [DirectionsController::class, 'edit']);

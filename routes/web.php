@@ -14,5 +14,6 @@ Route::post('/', [BotController::class, 'post']);
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
