@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     var loader = document.querySelector(".loader"),
         bar = document.querySelector(".loader__bar");
-    $("form").ajaxForm({
+    $(".sending-post").ajaxForm({
         beforeSend: function () {
             let percentage = "0%";
             bar.innerHTML = percentage;

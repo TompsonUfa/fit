@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data" class="sending-post">
                 @csrf
                 <div class="row justify-content-center mb-3">
                     <div class="col-12 text-center mb-3">
