@@ -1,7 +1,5 @@
 @extends('admin.index')
 
-
-
 @section('title', 'Панель администратора | Пользователи')
 
 @section('content')
@@ -34,7 +32,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 overflow-auto">
                         <table class="table table-striped table-bordered table-users">
                             <thead>
                                 <tr>
