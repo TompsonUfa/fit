@@ -1,0 +1,92 @@
+:root {
+    --first-color: #157fc4;
+    --second-color: #fe5001;
+    --third-color: #f5f0e9;
+    --gray-color: #575a65;
+    --dark-color: #000;
+    --white-color: #fff;
+    --green-color: #4bd396;
+    --red-color: #f5707a;
+    --title-font: "Montserrat", sans-serif;
+    --title-font-weight: 800;
+    --text-font: "Exo 2", sans-serif;
+    scroll-behavior: smooth;
+}
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1200px,
+);
+$input-btn-focus-color: none;
+$link-color: #fe5001;
+$accordion-icon-active-color: #fe5001;
+$accordion-icon-width: 40px;
+$accordion-icon-transform: rotate(45deg);
+$accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 16 16' fill='currentColor' class='bi bi-plus-circle-fill'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z'/></svg>");
+$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}' class='bi bi-plus-circle-fill'><path d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z'/></svg>");
+
+$carousel-control-icon-width: 2.5rem;
+$carousel-indicator-opacity: 1;
+$carousel-control-color: #fff;
+$carousel-control-opacity: 0.5;
+$carousel-control-hover-opacity: 1;
+$carousel-control-prev-icon-bg: none;
+$carousel-control-next-icon-bg: none;
+
+.carousel-control-prev-icon {
+    fill: var(--first-color);
+    transform: rotate(90deg);
+}
+.carousel-control-next-icon {
+    fill: var(--first-color);
+    transform: rotate(-90deg);
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 !important;
+    font-family: var(--title-font) !important;
+    font-weight: var(--title-font-weight) !important;
+}
+label {
+    font-family: var(--text-font) !important;
+}
+p,
+a,
+span,
+td,
+th,
+address {
+    font-family: var(--text-font) !important;
+    margin-bottom: 0 !important;
+}
+a {
+    text-decoration: none !important;
+}
+strong {
+    font-weight: 700 !important;
+}
+.btn-primary {
+    background-color: var(--second-color) !important;
+    font-size: 17px !important;
+    border: none !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+    -webkit-transition: all 0.2s ease !important;
+    &:hover {
+        background-color: #f76b2a !important;
+    }
+}
