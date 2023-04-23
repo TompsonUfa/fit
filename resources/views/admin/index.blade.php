@@ -52,6 +52,16 @@
                                 Пользователи
                             </a>
                         </li>
+
+                        <li class="nav__item">
+                            <form action="{{route('logout')}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn nav__link">
+                                    Выйти
+                                </button>
+                            </form>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="sidebar__btn_close">
