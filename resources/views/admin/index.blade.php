@@ -47,14 +47,15 @@
                                 ТРУДОУСТРОЙСТВО
                             </a>
                         </li>
+                        <hr>
                         <li class="nav__item {{ request()->is('admin/users*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/users') }}" class="nav__link">
                                 Пользователи
                             </a>
                         </li>
-
+                        <hr>
                         <li class="nav__item">
-                            <form action="{{route('logout')}}" method="post">
+                            <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn nav__link">
                                     Выйти
