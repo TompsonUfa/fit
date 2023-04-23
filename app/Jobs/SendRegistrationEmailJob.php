@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\User\PasswordMail;
+use App\Mail\User\CompleteRegistrationMail;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -42,6 +42,6 @@ class SendRegistrationEmailJob implements ShouldQueue
         $url = route('password.reset', ['token' => $token, 'email' => $user->email]);
 
         Mail::to($user->email)
-            ->send(new PasswordMail($url));
+            ->send(new CompleteRegistrationMail($url));
     }
 }

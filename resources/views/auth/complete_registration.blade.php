@@ -25,6 +25,11 @@
                     <input type="hidden" name="email" value="{{$email}}">
                     <input type="hidden" name="token" value="{{$token}}">
                     <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               required>
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleInputPassword" class="form-label">Пароль</label>
                         <input type="password" class="form-control" id="exampleInputPassword" name="password"
                                required>

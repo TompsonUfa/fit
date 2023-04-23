@@ -35,7 +35,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($user)) {
+        if (Auth::attempt($user, $request->get('remember', false))) {
             $request->session()->regenerate();
             if (Auth::user()->isAdmin()) {
                 return redirect()->intended('/admin');
@@ -65,7 +65,7 @@ class LoginController extends Controller
     {
         $token = $request->get('token');
         $email = $request->get('email');
-        return view('auth.reset-password', [
+        return view('auth.complete_registration', [
             'token' => $token,
             'email' => $email,
         ]);
@@ -74,25 +74,24 @@ class LoginController extends Controller
     public function UpdatePassword(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:4|confirmed',
         ]);
 
-//        $pr = PasswordReset::whereToken($request->get('token'))
-//            ->first();
+        $name = $request->get('name');
 
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
+            function (User $user, string $password) use ($name) {
                 $user->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
+                $user->name = $name;
                 $user->save();
             }
         );
-
-//        $pr->save();
 
         return $status === Password::PASSWORD_RESET
             ? redirect()->route('login')->with('status', __($status))

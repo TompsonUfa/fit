@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordMail extends Mailable
+class CompleteRegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class PasswordMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Password Mail',
+            subject: 'Complete Registration Mail',
         );
     }
 
@@ -44,7 +44,7 @@ class PasswordMail extends Mailable
     public function content()
     {
         return new Content(
-            html: 'mail.user.password',
+            html: 'mail.user.complete_registration',
         );
     }
 
