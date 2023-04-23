@@ -4,13 +4,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\PollitikaController;
 use App\Http\Controllers\LoginController;
-use App\Mail\User\PasswordMail;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
-
-use Illuminate\Support\Facades\Password;
-use Illuminate\Http\Request;
 
 
 Route::get('logs', [LogViewerController::class, 'index']);
