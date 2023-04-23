@@ -8,17 +8,23 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
+
     public function show(Request $request, UsersServices $service)
     {
         $search = $request->get('search');
         $total = $service->count();
-        $users = $service->show($search);
-        return view('admin.users.index', ['users' => $users, 'total' => $total]);
+        $users = $service->list($search);
+        return view('admin.users.index', [
+            'users' => $users,
+            'total' => $total
+        ]);
     }
+
     public function showAddUsers()
     {
         return view('admin.users.add.index');
     }
+
     public function add(Request $request, UsersServices $service)
     {
         $validator = Validator::make(
@@ -37,19 +43,32 @@ class UsersController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
-        $emailList = $request->emailList;
-        return $service->create($emailList);
+        $emailList = $request->get('emailList');
+        $service->createByListOfEmails($emailList);
+        return response()->json([
+            'message' => 'Пользователи успешно зарегистрированы.',
+        ], 200);
     }
+
     public function blocked(Request $request, UsersServices $service)
     {
         $userId = $request->id;
-        return $service->blocked($userId);
+        $service->blocked($userId);
+        return response()->json([
+            'message' => 'Пользователь заблокирован',
+        ]);
     }
+
     public function extend(Request $request, UsersServices $service)
     {
         $newAccess = $request->newAccess;
         $userId = $newAccess['userId'];
         $addDays = $newAccess['addDays'];
-        return $service->extend($userId, $addDays);
+        $user = $service->extend($userId, $addDays);
+        return response()->json([
+            'message' => 'Срок доступа обновлен',
+            'newDate' => $user->access_at->format('Y-m-d H:i:s'),
+        ]);
     }
+
 }

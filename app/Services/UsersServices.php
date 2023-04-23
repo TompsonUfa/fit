@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UsersServices
 {
@@ -14,57 +13,66 @@ class UsersServices
     {
         return User::where('role', 0)->count();
     }
-    public function show($search)
+
+    public function list($search = '')
     {
         if (empty($search)) {
-            $user = User::where('role', 0)->paginate(10);
+            $user = User::where('role', 0)
+                ->paginate(10);
         } else {
-            $user = User::where('role', 0)->where('name', 'LIKE', '%' . $search . '%')->paginate(10);
-            $user->appends(request()->input())->links();
+            $user = User::where('role', 0)
+                ->where('name', 'LIKE', '%' . $search . '%')
+                ->paginate(10);
         }
         return $user;
     }
-    public function create($list)
+
+    public function createByListOfEmails($list)
+    {
+        foreach ($list as $email) {
+            $this->createByEmail($email);
+        }
+    }
+
+    public function createByEmail($email)
     {
         $currentDate = Carbon::now();
-        $expirationDate = $currentDate->addDays(56);
-        foreach ($list as $email) {
-            $password = str_random(8);
-            $hashedPassword = Hash::make($password);
-            $user = User::create([
+        $currentDate->setSeconds(59);
+        $currentDate->setMinutes(59);
+        $currentDate->setHours(23);
+        $access_at = $currentDate->addDays(env('ACCESS_TO_COURSES_DAYS'));
+
+        $user = User::whereEmail($email)->first();
+        if (!empty($user)) {
+            User::create([
                 'name' => $email,
                 'email' => $email,
-                'password' => $hashedPassword,
-                'account_expiry_date' => $expirationDate,
+                'password' => Hash::make(Str::uuid()),
+                'access_at' => $access_at,
             ]);
-            Mail::to($email)->send(new PasswordMail($password));
         }
-        return response()->json([
-            'message' => 'Пользователи успешно зарегистрированы.',
-        ], 200);
+
+//        Mail::to($email)->send(new PasswordMail($password));
     }
+
     public function blocked($id)
     {
         $currentDate = Carbon::now();
         $user = User::find($id);
-        $user->blocked = true;
-        $user->account_expiry_date = $currentDate;
+        $user->blocked_at = $currentDate;
         $user->save();
-        return response()->json([
-            'message' => 'Пользователь заблокирован',
-            'newDate' => $currentDate->format('Y-m-d H:i:s'),
-        ], 200);
+        return $user;
     }
+
     public function extend($id, $days)
     {
         $user = User::find($id);
-        $newDate = Carbon::createFromFormat('Y-m-d H:i:s', $user->account_expiry_date)->addDays($days);
-        $user->account_expiry_date = $newDate;
-        $user->blocked = false;
+        $newDate = Carbon::createFromFormat('Y-m-d H:i:s', $user->access_at)
+            ->addDays($days);
+        $user->access_at = $newDate;
+        $user->blocked_at = null;
         $user->save();
-        return response()->json([
-            'message' => 'Срок доступа обновлен',
-            'newDate' => $user->account_expiry_date->format('Y-m-d H:i:s'),
-        ], 200);
+        return $user;
     }
+
 }
