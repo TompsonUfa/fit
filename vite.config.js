@@ -15,6 +15,8 @@ export default defineConfig({
                 "resources/js/editor.js",
                 "resources/js/change-img.js",
                 "resources/js/sending-posts.js",
+                "resources/js/add-users.js",
+                "resources/js/user-access.js",
             ],
             refresh: true,
         }),
