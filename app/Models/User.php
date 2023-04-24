@@ -36,8 +36,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'blocked',
-        'account_expiry_date',
+        'blocked_at',
+        'access_at',
     ];
 
     /**
@@ -56,7 +56,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'access_at' => 'datetime',
+        'blocked_at' => 'datetime',
     ];
 
     public function isAdmin(): bool

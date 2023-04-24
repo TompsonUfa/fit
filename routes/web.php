@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
+
 Route::get('logs', [LogViewerController::class, 'index']);
 
 Route::get('/', [MainController::class, 'show']);
@@ -16,4 +17,12 @@ Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/reset-password', [LoginController::class, 'ResetPassword'])
+    ->name('password.reset');
+
+Route::post('/update-password', [LoginController::class, 'UpdatePassword'])
+    ->name('password.update');
+
+
 Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
+
