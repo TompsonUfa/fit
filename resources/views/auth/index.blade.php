@@ -68,7 +68,6 @@
                                 </svg>
                             </div>
                         </div>
-
                         <div class="w-100 text-start mb-4">
                             <label class="checkbox">
                                 <input type="checkbox" name="remember" />
@@ -96,8 +95,6 @@
                                 Запомнить
                             </label>
                         </div>
-
-
                         @if (isset($errors) && count($errors) > 0)
                             <div class="alert alert-warning mb-4" role="alert">
                                 <ul class="list-unstyled mb-0">
