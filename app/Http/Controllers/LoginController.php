@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Jobs\SendRegistrationEmailJob;
+use App\Jobs\SendResetPassEmailJob;
 use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\LoginServices;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller
@@ -61,17 +64,85 @@ class LoginController extends Controller
         return redirect()->route('login');
     }
 
-    public function ResetPassword(Request $request)
+    public function PasswordResetGetEmail()
+    {
+        return view('auth.get_email');
+    }
+
+    public function PasswordResetGetEmail_(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'email' => 'required|email',
+            ],
+        );
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $user = User::whereEmail($request->get('email'))
+            ->first();
+
+        if (!empty($user)) {
+            SendResetPassEmailJob::dispatch($user->id)
+                ->onQueue('email');
+        }
+
+        return redirect()
+            ->route('password.get_email_ok');
+    }
+
+    public function PasswordResetGetEmailOk()
+    {
+        return view('auth.get_email_ok');
+    }
+
+    public function PasswordReset(Request $request)
     {
         $token = $request->get('token');
         $email = $request->get('email');
-        return view('auth.complete_registration', [
+        return view('auth.password_reset', [
             'token' => $token,
             'email' => $email,
         ]);
     }
 
-    public function UpdatePassword(Request $request)
+    public function PasswordUpdate(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:4|confirmed',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function (User $user, string $password)  {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+                $user->save();
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
+    }
+
+    public function RegistrationEnd(Request $request)
+    {
+        $token = $request->get('token');
+        $email = $request->get('email');
+        return view('auth.registration_end', [
+            'token' => $token,
+            'email' => $email,
+        ]);
+    }
+
+
+    public function RegistrationUpdate(Request $request)
     {
         $request->validate([
             'name' => 'required',

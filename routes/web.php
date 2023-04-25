@@ -17,10 +17,25 @@ Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/reset-password', [LoginController::class, 'ResetPassword'])
+Route::get('/end-registration', [LoginController::class, 'RegistrationEnd'])
+    ->name('registration.end');
+
+Route::post('/update-registration', [LoginController::class, 'RegistrationUpdate'])
+    ->name('registration.update');
+
+Route::get('/password-reset-get-email', [LoginController::class, 'PasswordResetGetEmail'])
+    ->name('password.get_email');
+
+Route::post('/password-reset-get-email', [LoginController::class, 'PasswordResetGetEmail_'])
+    ->name('password.get_email_');
+
+Route::get('/password-reset-get-email-ok', [LoginController::class, 'PasswordResetGetEmailOk'])
+    ->name('password.get_email_ok');
+
+Route::get('/password-reset', [LoginController::class, 'PasswordReset'])
     ->name('password.reset');
 
-Route::post('/update-password', [LoginController::class, 'UpdatePassword'])
+Route::post('/password-update', [LoginController::class, 'PasswordUpdate'])
     ->name('password.update');
 
 
