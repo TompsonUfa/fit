@@ -13,7 +13,7 @@
             <p class="panel__desc mb-3">
                 Количество курсов на сайте: <span class="panel__counter">{{ $total }}</span>
             </p>
-            <a href="courses/add" class="btn btn-success panel__btn mb-3">Добавить курс
+            <a href="page_courses/add" class="btn btn-success panel__btn mb-3">Добавить курс
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
