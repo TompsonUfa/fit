@@ -53,7 +53,7 @@
                                         </td>
                                         <td class="align-middle table__title">{{ $course['title'] }}</td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ url('admin/courses/edit') }}{{ '/' . $course['id'] }}"
+                                            <a href="{{ url('admin/page_courses/edit') }}{{ '/' . $course['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                     class="bi bi-pencil-square" viewBox="0 0 16 16">
