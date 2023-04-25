@@ -48,9 +48,9 @@
                                         <td class="align-middle text-center table-users__email">{{ $user->email }}
                                         </td>
                                         <td class="align-middle text-center table-users__date">
-                                            {{ $user->account_expiry_date }}</td>
+                                            {{ $user->access_at }}</td>
                                         <td class="align-middle text-center table-users__status">
-                                            {{ $user->blocked == 0 ? 'Открыт' : 'Закрыт' }}
+                                            {{ $user->blocked_at == null ? 'Открыт' : 'Закрыт' }}
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="table__btn table__btn_edit mx-2">
