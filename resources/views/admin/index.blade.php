@@ -24,27 +24,27 @@
                     <ul class="sidebar__nav nav">
                         <li class="nav__item {{ request()->is('admin/directions*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/directions') }}" class="nav__link">
-                                Направления
+                                Секция "Направления"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/courses*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/courses') }}" class="nav__link">
-                                Курсы
+                                Секция "Курсы"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/posters*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/posters') }}" class="nav__link">
-                                Афиши
+                                Секция "Афиши"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/teachers*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/teachers') }}" class="nav__link">
-                                ПРЕПОДАВАТЕЛИ
+                                Секция "ПРЕПОДАВАТЕЛИ"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/employment*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/employment') }}" class="nav__link">
-                                ТРУДОУСТРОЙСТВО
+                                Секция "ТРУДОУСТРОЙСТВО"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/users*') ? 'nav__item_active' : null }}">
