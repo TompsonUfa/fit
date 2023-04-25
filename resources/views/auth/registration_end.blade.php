@@ -20,7 +20,7 @@
                         <img src="/logo.png" alt="О-ФИТ Школа фитнеса">
                     </div>
                     <h3 class="login__title text-center mb-4">Создать новый пароль</h3>
-                    <form action="{{ route('password.update') }}" method="POST" class="login__form">
+                    <form action="{{ route('registration.update') }}" method="POST" class="login__form">
                         @csrf
                         <div class="login__wrap-input mb-4">
                             <input class="form-control login__input" id="name" type="name" name="name"

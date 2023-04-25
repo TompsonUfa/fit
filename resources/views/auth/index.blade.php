@@ -106,6 +106,7 @@
                         @endif
 
                         <button type="submit" class="btn login__btn">Войти</button>
+                        <a  href="{{route('password.get_email')}}" class="btn login__btn">Я потерял пароль</a>
 
                     </form>
                 </div>

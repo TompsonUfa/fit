@@ -13,3 +13,5 @@ php artisan ide-helper:models --write-mixin
 ```
 php artisan ide-helper:meta
 ```
+
+http://mailtrap.io/
