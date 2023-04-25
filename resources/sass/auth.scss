@@ -18,7 +18,108 @@
             object-fit: cover;
         }
     }
+    &__wrap-input {
+        position: relative;
+        width: 100%;
+    }
     &__input {
-        padding: 28px 0px 12px 0px;
+        width: calc(100% - 44px);
+        margin-left: auto;
+        padding: 20px 0px;
+        height: 56px;
+        border: none;
+        border-radius: 0;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        &:focus {
+            border-bottom: solid 1px var(--second-color);
+        }
+        &:valid:not(:placeholder-shown) + .login__icon {
+            svg {
+                opacity: 1;
+                path {
+                    fill: var(--second-color);
+                }
+            }
+        }
+        &:not(:valid):not(:focus) + .login__icon {
+            animation-name: shake-shake;
+            animation-duration: 0.3s;
+        }
+        &:valid {
+            border-bottom: solid 1px var(--second-color);
+        }
+    }
+    &__icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 56px;
+        width: 44px;
+        display: flex;
+        svg {
+            height: 30px;
+            width: 30px;
+            margin: auto;
+            opacity: 0.15;
+            transition: all 0.3s ease;
+            path {
+                transition: all 0.3s ease;
+            }
+        }
+    }
+    &__remember {
+        color: var(--second-color);
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+            display: none;
+        }
+    }
+    &__btn {
+        margin: 0 auto;
+        display: block;
+        color: #fff;
+        background-color: var(--second-color);
+        border-radius: 24px;
+        text-align: center;
+        transition: 0.4s linear;
+        padding: 10px 30px;
+        &:hover {
+            opacity: 0.8;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 2px 6px -1px var(--second-color);
+            background-color: var(--second-color);
+        }
+    }
+}
+$displacement: 3px;
+@keyframes shake-shake {
+    0% {
+        transform: translateX(-$displacement);
+    }
+    20% {
+        transform: translateX($displacement);
+    }
+    40% {
+        transform: translateX(-$displacement);
+    }
+    60% {
+        transform: translateX($displacement);
+    }
+    80% {
+        transform: translateX(-$displacement);
+    }
+    100% {
+        transform: translateX(0px);
     }
 }

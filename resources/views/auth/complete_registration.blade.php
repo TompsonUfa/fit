@@ -15,7 +15,7 @@
 <div class="container py-5 vh-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-7 col-lg-5">
-            <div class="login  p-4 p-md-5">
+            <div class="login p-4 p-md-5">
                 <div class="login__img mb-3">
                     <img src="/logo.png" alt="О-ФИТ Школа фитнеса">
                 </div>
