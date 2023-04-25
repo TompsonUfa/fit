@@ -27,8 +27,8 @@
                                 Секция "Направления"
                             </a>
                         </li>
-                        <li class="nav__item {{ request()->is('admin/courses*') ? 'nav__item_active' : null }}">
-                            <a href="{{ url('admin/courses') }}" class="nav__link">
+                        <li class="nav__item {{ request()->is('admin/page_courses*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/page_courses') }}" class="nav__link">
                                 Секция "Курсы"
                             </a>
                         </li>
