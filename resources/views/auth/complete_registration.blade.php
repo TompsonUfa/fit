@@ -16,7 +16,7 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-7 col-lg-5">
                 <div class="login p-4 p-md-5">
-                    <div class="login__img mb-3">
+                    <div class="login__img mb-4">
                         <img src="/logo.png" alt="О-ФИТ Школа фитнеса">
                     </div>
                     <h3 class="login__title text-center mb-4">Создать новый пароль</h3>
@@ -100,7 +100,6 @@
                         <button type="submit" class="btn btn-primary w-100">Изменить</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
