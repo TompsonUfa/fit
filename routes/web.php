@@ -40,4 +40,3 @@ Route::post('/password-update', [LoginController::class, 'PasswordUpdate'])
 
 
 Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
-

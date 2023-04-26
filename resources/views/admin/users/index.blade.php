@@ -117,6 +117,6 @@
         </div>
     </div>
     @push('scripts')
-        @vite(['resources/sass/app.scss', 'resources/js/sidebar.js', 'resources/js/bootstrap.js', 'resources/js/user-access.js'])
+        @vite(['resources/sass/app.scss', 'resources/sass/style.scss', 'resources/js/sidebar.js', 'resources/js/bootstrap.js', 'resources/js/user-access.js'])
     @endpush
 @endsection
