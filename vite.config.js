@@ -7,7 +7,9 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/sass/app.scss",
+                "resources/sass/style.scss",
                 "resources/sass/auth.scss",
+                "resources/sass/personal.scss",
                 "resources/js/app.js",
                 "resources/js/bootstrap.js",
                 "resources/js/sidebar.js",
@@ -17,6 +19,7 @@ export default defineConfig({
                 "resources/js/sending-posts.js",
                 "resources/js/add-users.js",
                 "resources/js/user-access.js",
+                "resources/js/style-input.js",
             ],
             refresh: true,
         }),

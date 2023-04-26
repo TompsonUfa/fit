@@ -45,7 +45,7 @@
     <!-- /Yandex.Metrika counter -->
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/style.scss', 'resources/js/app.js'])
     <title>@yield('title')</title>
 </head>
 
