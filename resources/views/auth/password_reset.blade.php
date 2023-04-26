@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    @vite(['resources/sass/app.scss', 'resources/sass/auth.scss'])
+    @vite(['resources/sass/app.scss', 'resources/sass/auth.scss', 'resources/js/style-input.js'])
     <title>Фитнес клуб Ө-FIT | Создать новый пароль</title>
 </head>
 
@@ -24,17 +24,13 @@
                         @csrf
                         <div class="login__wrap-input mb-4">
                             <input class="form-control login__input" id="password" type="password" name="password"
-                                placeholder="Придумайте пароль" required>
+                                placeholder="Пароль" required>
                             <div class="login__icon">
                                 <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 24 24"
                                     xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                                     <style type="text/css">
                                         .st0 {
                                             fill: none;
-                                        }
-
-                                        .st1 {
-                                            fill: #010101;
                                         }
                                     </style>
                                     <rect class="st0" width="24" height="24"></rect>
@@ -57,10 +53,6 @@
                                     <style type="text/css">
                                         .st0 {
                                             fill: none;
-                                        }
-
-                                        .st1 {
-                                            fill: #010101;
                                         }
                                     </style>
                                     <rect class="st0" width="24" height="24"></rect>
