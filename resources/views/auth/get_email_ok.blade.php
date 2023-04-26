@@ -19,7 +19,7 @@
                 <div class="login__img mb-4">
                     <img src="/logo.png" alt="О-ФИТ Школа фитнеса">
                 </div>
-                <h3 class="login__title text-center mb-4">Ссылка для восстановления пароля отрпавлена на почту</h3>
+                <h3 class="login__title text-center mb-4">Ссылка для восстановления пароля отправлена на почту</h3>
             </div>
         </div>
     </div>
