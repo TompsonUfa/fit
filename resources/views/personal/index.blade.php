@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="dashboard__content p-3 p-lg-5">
-        <div class="dashboard__header">
+        <div class="dashboard__header mb-5">
             <h1 class="title dashboard__title">Онлайн курсы</h1>
             <div class="dropdown user-profile">
                 <button class="btn btn-secondary dropdown-toggle user-profile__btn" type="button" id="dropdownMenuButton1"
@@ -64,8 +64,23 @@
                 </ul>
             </div>
         </div>
-        <div class="dashboard__сourses сourses row">
-
+        <div class="dashboard__сourses сourses gap-5 row">
+            <div class="сourses__item col-sm-12 col-md-5 col-lg-3">
+                <h4 class="сourses__title">1. Биомеханика</h4>
+                <a class="сourses__link" href="">Открыть</a>
+            </div>
+            <div class="сourses__item col-sm-12 col-md-5 col-lg-3">
+                <h4 class="сourses__title">1. Биомеханика</h4>
+                <a class="сourses__link" href="">Открыть</a>
+            </div>
+            <div class="сourses__item col-sm-12 col-md-5 col-lg-3">
+                <h4 class="сourses__title">1. Биомеханика</h4>
+                <a class="сourses__link" href="">Открыть</a>
+            </div>
+            <div class="сourses__item col-sm-12 col-md-5 col-lg-3">
+                <h4 class="сourses__title">1. Биомеханика</h4>
+                <a class="сourses__link" href="">Открыть</a>
+            </div>
         </div>
     </div>
 @endsection

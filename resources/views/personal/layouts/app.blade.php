@@ -15,10 +15,9 @@
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap dashboard">
-            <div class="col-md-1">
-                <div class="sidebar dashboard__sidebar p-0">
-                    <div class="sidebar__content">
-                        <div class="sidebar__logo">
+            <div class="col-md-1 sidebar dashboard__sidebar p-0">
+                <div class="sidebar__content">
+                        <div class="sidebar__logo mx-2">
                             <img src="/logo.png" alt="ШКОЛА ФИТНЕСА «Ө-FIT»">
                         </div>
                         <ul class="sidebar__nav nav">
@@ -64,7 +63,6 @@
                         </svg>
                     </div> --}}
                 </div>
-            </div>
             <div class="col ps-0 py-4">
                 @yield('content')
             </div>
