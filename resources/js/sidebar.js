@@ -9,9 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebar.classList.remove('sidebar_visible');
     }
 
-    const burger = document.querySelector('.burger'),
-        btnClose = document.querySelector('.sidebar__btn_close');
+    const burger = document.querySelector('.burger');
+    if (burger != null) {
+        let btnClose = document.querySelector('.sidebar__btn_close');
 
-    burger.addEventListener('click', openSidebar);
-    btnClose.addEventListener('click', closeSidebar);
+        burger.addEventListener('click', openSidebar);
+        btnClose.addEventListener('click', closeSidebar);
+    }
+
 })

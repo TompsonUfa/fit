@@ -113,7 +113,4 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    @push('scripts')
-        @vite(['resources/sass/app.scss', 'resources/sass/style.scss', 'resources/js/sidebar.js', 'resources/js/bootstrap.js', 'resources/js/delete.js'])
-    @endpush
 @endsection

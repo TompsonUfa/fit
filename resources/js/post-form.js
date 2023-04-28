@@ -74,15 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
     let postModal = function (result, m, form) {
         $.ajax({
             url: "",
-            headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+            headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
             type: "POST",
             data: {
                 data: result,
             },
             success: function (response) {
                 const inputs = form.querySelectorAll(".form-control"),
-                 modal = bootstrap.Modal.getInstance(m);
-                 modal.hide();
+                    modal = bootstrap.Modal.getInstance(m);
+                modal.hide();
                 for (let i = 0; i < inputs.length; i++) {
                     inputs[i].value = "";
                 }
@@ -125,15 +125,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 result = [getFormData(form)];
             }
             postModal(result, modal, form);
-        };
+        }
     }
     const modals = document.querySelectorAll('.modal');
-    for (let i = 0; i < modals.length; i++) {
-        const modal = modals[i],
-            btnPost = modal.querySelector('.btn-submit');
-       btnPost.addEventListener('click', getModalData);
-    }
-   
+    if (modals != null)
+        for (let i = 0; i < modals.length; i++) {
+            const modal = modals[i]
+            if (modal != null) {
+                let btnPost = modal.querySelector('.btn-submit');
+                if (btnPost != null)
+                    btnPost.addEventListener('click', getModalData);
+            }
+        }
+
 });
 
 
