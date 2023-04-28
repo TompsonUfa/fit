@@ -71,6 +71,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    @vite(['resources/sass/app.scss', 'resources/sass/style.scss', 'resources/js/sidebar.js', 'resources/js/bootstrap.js', 'resources/js/add-users.js'])
-@endpush

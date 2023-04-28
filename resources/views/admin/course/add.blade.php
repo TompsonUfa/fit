@@ -27,7 +27,4 @@
 
 @endsection
 
-@push('scripts')
-    @vite(['resources/sass/app.scss', 'resources/js/editorWithVideo2.js',])
-@endpush
 

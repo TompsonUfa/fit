@@ -7,3 +7,10 @@ import './show-modal'
 import './post-form';
 import './lazy';
 import './slider'
+import './sidebar'
+import './delete'
+import './change-img'
+import './sending-posts'
+import './add-users'
+import './user-access'
+import './style-input'

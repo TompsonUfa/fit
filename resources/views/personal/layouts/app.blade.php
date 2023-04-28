@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    @vite(['resources/sass/app.scss', 'resources/sass/personal.scss', 'resources/js/bootstrap.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/personal.scss', 'resources/js/app.js'])
     <title>@yield('title')</title>
 </head>
 
