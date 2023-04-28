@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CourseServices;
 use App\Services\MediaServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -47,40 +46,13 @@ class MediaController extends Controller
         ]);
     }
 
-    public function manager()
+    public function manager(Request $request, MediaServices $services)
     {
-        $files = Storage::disk('media')->allFiles();
+        $files = $services->list();
         return view('admin.media.manager', [
+            'CKEditorFuncNum' => $request->get('CKEditorFuncNum', 1),
             'files' => $files,
         ]);
-        $directory = '../storage/app/media';
-
-        if (!isset($_GET['CKEditorFuncNum'])) {
-            exit('CKEditorFuncNum is not defined');
-        }
-
-// Здесь нужно выполнить любые необходимые операции для выбора файлов с сервера.
-// В примере мы просто сканируем директорию "images" и возвращаем список файлов.
-        $files = array_diff(scandir($directory), array('..', '.'));
-        $images = array();
-
-        foreach ($files as $file) {
-            $extension = pathinfo($file, PATHINFO_EXTENSION);
-            if (in_array($extension, array('jpg', 'jpeg', 'png', 'gif'))) {
-                $images[] = array(
-                    'url' => $directory . '/' . $file,
-                    'thumb' => $directory . '/' . $file,
-                    'name' => $file
-                );
-            }
-        }
-
-        echo '<script src="/ckeditor/ckeditor.js"></script>';
-
-// Отправляем список файлов обратно в CKEditor с помощью JavaScript.
-        echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction(' . $_GET['CKEditorFuncNum'] . ', ' . json_encode($images) . ');</script>';
-
-
     }
 
 }

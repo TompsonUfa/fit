@@ -15,7 +15,7 @@ class CourseServices
     public function getListWithPaginate()
     {
         return Course::query()
-            ->paginate(3);
+            ->paginate(30);
     }
 
     public function create($caption, $text)
@@ -27,9 +27,24 @@ class CourseServices
         return $course;
     }
 
+    public function update($id, $caption, $text)
+    {
+        $course = $this->getById($id);
+        $course->caption = $caption;
+        $course->text = $text;
+        $course->save();
+        return $course;
+    }
+
+
     public function getById($id)
     {
         return Course::find($id);
+    }
+
+    public function delete($id)
+    {
+        $this->getById($id)->delete();
     }
 
 }

@@ -48,6 +48,11 @@
                         </a>
                     </li>
                     <hr>
+                    <li class="nav__item">
+                        <a href="{{ route('private') }}" class="nav__link">
+                            go to private
+                        </a>
+                    </li>
                     <li class="nav__item {{ request()->is('admin/users*') ? 'nav__item_active' : null }}">
                         <a href="{{ url('admin/users') }}" class="nav__link">
                             Пользователи

@@ -59,11 +59,15 @@ class MediaServices
 
     }
 
-
     public function get($name)
     {
         return Media::whereCaption($name)
             ->first();
+    }
+
+    public function list()
+    {
+        return Media::all();
     }
 
 }
