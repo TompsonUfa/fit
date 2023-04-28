@@ -23,8 +23,7 @@ class LoginController extends Controller
             if (Auth::user()->isAdmin()) {
                 return redirect()->route('admin');
             } else {
-                //todo
-                return redirect('/LC');
+                return redirect()->route('private');
             }
         } else {
             return view('auth.index');
@@ -44,7 +43,7 @@ class LoginController extends Controller
                 return redirect()->intended('/admin');
             } else {
                 //todo
-                return redirect('/LC');
+                return redirect()->route('private');
             }
         }
 

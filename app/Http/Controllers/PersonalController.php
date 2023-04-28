@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\CourseServices;
 
 class PersonalController extends Controller
 {
-    public function show()
+    public function show(CourseServices $services)
     {
-        return view('personal.index');
+        $courses = $services->getListWithPaginate();
+        return view('personal.list', [
+            'courses' => $courses,
+        ]);
     }
+
 }

@@ -17,15 +17,19 @@
 </head>
 
 <body>
+<input type="hidden" id="CKEditorFuncNum" value="{{$CKEditorFuncNum}}">
 <div class="container-fluid">
     @foreach($files as $file)
         <div class="row">
             <div class="col">
-                <a class="file" href="#">{{$file}}</a>
+                <a class="file" data-url="/private/media/{{$file->caption}}" href="#">{{$file->caption}} ({{$file->size}})</a>
             </div>
         </div>
     @endforeach
 </div>
+
+<a class="close" href="#">CLOSE</a>
+
 
 </body>
 
