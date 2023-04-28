@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CourseServices;
+use App\Services\MediaServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,31 +11,39 @@ use Illuminate\Support\Facades\Storage;
 class MediaController extends Controller
 {
 
-
-    public function upload(Request $request)
+    public function get($media, MediaServices $service)
     {
-        try {
-            $file = $request->file('upload');
-            $name = bin2hex(random_bytes(5)) . '_' . $file->getClientOriginalName();
-            Storage::disk('media')
-                ->putFileAs(
-                    '/',
-                    $file,
-                    $name
-                );
-        } catch (\Exception $e) {
+        $media = $service->get($media);
+        if (empty($media)) {
+            abort(404);
+        }
+        $path = Storage::disk('media')->path($media->hash);
+        return response()->file(
+            $path,
+            [
+                'Content-Type' => $media->mimeType,
+                'Content-Length' => $media->size,
+            ]
+        );
+    }
+
+    public function upload(Request $request, MediaServices $service)
+    {
+        $res = $service->upload($request->file('upload'));
+
+        if (is_null($res)) {
             return response()->json([
                 'uploaded' => 0,
                 'error' => [
-                    'message' => $e->getMessage(),
+                    'message' => 'Error upload',
                 ]
             ]);
         }
-        
+
         return response()->json([
             'uploaded' => 1,
-            'fileName' => $name,
-            'url' => env('APP_URL') . '/media/' . $name,
+            'fileName' => $res->caption,
+            'url' => '/private/media/' . $res->caption,
         ]);
     }
 
@@ -69,7 +78,7 @@ class MediaController extends Controller
         echo '<script src="/ckeditor/ckeditor.js"></script>';
 
 // Отправляем список файлов обратно в CKEditor с помощью JavaScript.
-        echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction('.$_GET['CKEditorFuncNum'].', '.json_encode($images).');</script>';
+        echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction(' . $_GET['CKEditorFuncNum'] . ', ' . json_encode($images) . ');</script>';
 
 
     }

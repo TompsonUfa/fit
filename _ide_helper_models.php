@@ -12,6 +12,70 @@
 
 namespace App\Models{
 /**
+ * App\Models\Course
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Course newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Course newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Course query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Course whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperCourse {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Media
+ *
+ * @property int $id
+ * @property string $caption
+ * @property string $mimeType
+ * @property int $size
+ * @property string $hash
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Media newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereCaption($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereMimeType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Media whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperMedia {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\PageCourse
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $text
+ * @property string $img
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse whereImg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PageCourse whereTitle($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperPageCourse {}
+}
+
+namespace App\Models{
+/**
  * App\Models\PasswordReset
  *
  * @property string $email
@@ -65,26 +129,6 @@ namespace App\Models{
  * @mixin \Eloquent
  */
 	class IdeHelperUser {}
-}
-
-namespace App\Models{
-/**
- * App\Models\course
- *
- * @property int $id
- * @property string $title
- * @property string $text
- * @property string $img
- * @method static \Illuminate\Database\Eloquent\Builder|course newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|course newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|course query()
- * @method static \Illuminate\Database\Eloquent\Builder|course whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|course whereImg($value)
- * @method static \Illuminate\Database\Eloquent\Builder|course whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|course whereTitle($value)
- * @mixin \Eloquent
- */
-	class IdeHelpercourse {}
 }
 
 namespace App\Models{

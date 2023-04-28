@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
     <script src="/ckeditor/ckeditor.js"></script>
 
-    @vite(['resources/sass/app.scss', 'resources/js/editorWithVideo2.js', 'resources/js/editorManager.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/editorAdmin.js', 'resources/js/editorManager.js'])
 
     <title>@yield('title')</title>
 </head>
