@@ -9,7 +9,10 @@
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
+
     @stack('scripts')
+
     <title>@yield('title')</title>
 </head>
 
@@ -85,6 +88,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
