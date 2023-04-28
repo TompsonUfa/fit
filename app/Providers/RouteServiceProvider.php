@@ -42,9 +42,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/admin.php'));
 
             Route::middleware(['web', 'auth'])
-                ->prefix('LC')
-                ->namespace('LC')
-                ->group(base_path('routes/personal.php'));
+                ->prefix('private')
+                ->namespace('private')
+                ->group(base_path('routes/private.php'));
         });
     }
 

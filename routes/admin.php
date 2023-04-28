@@ -55,6 +55,9 @@ Route::post('/users/extend', [UsersController::class, 'extend']);
 Route::get('/course/list', [CourseController::class, 'list'])->name('course.list');
 Route::get('/course/add', [CourseController::class, 'add'])->name('course.add');
 Route::post('/course/add_', [CourseController::class, 'add_'])->name('course.add_');
+Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+Route::post('/course/edit_', [CourseController::class, 'edit_'])->name('course.edit_');
+Route::get('/course/{id}', [CourseController::class, 'detail'])->name('course.detail');
 
 
 Route::post('/media/upload', [MediaController::class, 'upload']);

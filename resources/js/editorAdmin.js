@@ -11,5 +11,6 @@ config.extraPlugins = 'html5video';
 config.fileTools_requestHeaders = {
     'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content'),
 };
-if ($('#wysiwyg_video').length)
-    CKEDITOR.replace( 'wysiwyg_video', config);
+
+if ($('#editor_admin').length)
+    CKEDITOR.replace( 'editor_admin', config);

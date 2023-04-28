@@ -14,6 +14,26 @@
             <a href="{{route('course.add')}}" class="btn btn-success panel__btn mb-3">Добавить курс
             </a>
         </div>
+        <div class="col-12 mt-5">
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Caption</th>
+                    <th></th>
+                </tr>
+                @foreach($courses as $course)
+                    <tr>
+                        <th>{{$course->id}}</th>
+                        <th>{{$course->caption}}</th>
+                        <th>edit</th>
+                    </tr>
+
+                @endforeach
+            </table>
+
+            {{ $courses->links()  }}
+
+        </div>
     </div>
 
 @endsection

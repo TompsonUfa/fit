@@ -53,6 +53,11 @@
                             Пользователи
                         </a>
                     </li>
+                    <li class="nav__item {{ request()->is('admin/course*') ? 'nav__item_active' : null }}">
+                        <a href="{{ route('course.list') }}" class="nav__link">
+                            Курсы
+                        </a>
+                    </li>
                     <hr>
                     <li class="nav__item">
                         <form action="{{ route('logout') }}" method="post">

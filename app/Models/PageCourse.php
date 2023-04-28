@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin IdeHelpercourse
+ * @mixin IdeHelperPageCourse
  */
 class PageCourse extends Model
 {

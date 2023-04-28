@@ -11,6 +11,8 @@ export default defineConfig({
                 "resources/sass/auth.scss",
                 "resources/sass/personal.scss",
                 "resources/js/app.js",
+                "resources/js/editorAdmin.js",
+                "resources/js/editorManager.js",
             ],
             refresh: true,
         }),

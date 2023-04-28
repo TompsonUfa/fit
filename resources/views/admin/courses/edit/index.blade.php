@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <textarea class="wysiwyg" name="text">{{ $course->text }}</textarea>
+                        <textarea class="wysiwyg" id="wysiwyg" name="text">{{ $course->text }}</textarea>
                     </div>
                 </div>
                 <button class="btn btn-success panel__btn" type="submit">Сохранить</button>

@@ -47,9 +47,9 @@
                     </div>
                     <div class="col-12">
                         @if (isset($direction))
-                            <textarea class="wysiwyg" name="text">{{ $direction->text }}</textarea>
+                            <textarea class="wysiwyg" id="wysiwyg" name="text">{{ $direction->text }}</textarea>
                         @else
-                            <textarea class="wysiwyg" name="text"></textarea>
+                            <textarea class="wysiwyg" id="wysiwyg" name="text"></textarea>
                         @endif
                     </div>
                 </div>
