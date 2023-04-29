@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\course;
+use App\Models\PageCourse;
 use App\Models\poster;
 use App\Models\teacher;
 use App\Models\employment;
@@ -12,7 +12,7 @@ class MainController extends Controller
 {
     public function show()
     {
-        $courses = Course::all();
+        $courses = PageCourse::all();
         $posters = Poster::orderBy('id', 'desc')->get();
         $teachers = Teacher::all();
         $employment = Employment::orderBy('id', 'desc')->get();

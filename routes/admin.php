@@ -17,28 +17,28 @@ Route::get('/', function () {
 Route::get('/directions', [DirectionsController::class, 'show'])->name('directions');
 Route::post('/directions', [DirectionsController::class, 'edit']);
 
-Route::get('/page_courses', [PageCourseController::class, 'show'])->name('courses');
+Route::get('/page_courses', [PageCourseController::class, 'show'])->name('admin.courses');
 Route::post('/page_courses', [PageCourseController::class, 'delete']);
 Route::get('/page_courses/add', [PageCourseController::class, 'showAddCourse']);
 Route::post('/page_courses/add', [PageCourseController::class, 'addCourse']);
 Route::get('/page_courses/edit/{id}', [PageCourseController::class, 'showEditCourse']);
 Route::post('/page_courses/edit/{id}', [PageCourseController::class, 'editCourse']);
 
-Route::get('/posters', [PostersController::class, 'show'])->name('posters');
+Route::get('/posters', [PostersController::class, 'show'])->name('admin.posters');
 Route::post('/posters', [PostersController::class, 'delete']);
 Route::get('/posters/add', [PostersController::class, 'showAddPoster']);
 Route::post('/posters/add', [PostersController::class, 'addPoster']);
 Route::get('/posters/edit/{id}', [PostersController::class, 'showEditPoster']);
 Route::post('/posters/edit/{id}', [PostersController::class, 'editPoster']);
 
-Route::get('/teachers', [TeachersController::class, 'show'])->name('teachers');
+Route::get('/teachers', [TeachersController::class, 'show'])->name('admin.teachers');
 Route::post('/teachers', [TeachersController::class, 'delete']);
 Route::get('/teachers/add', [TeachersController::class, 'showAddTeacher']);
 Route::post('/teachers/add', [TeachersController::class, 'addTeacher']);
 Route::get('/teachers/edit/{id}', [TeachersController::class, 'showEditTeacher']);
 Route::post('/teachers/edit/{id}', [TeachersController::class, 'editTeacher']);
 
-Route::get('/employment', [EmploymentController::class, 'show'])->name('employment');
+Route::get('/employment', [EmploymentController::class, 'show'])->name('admin.employment');
 Route::post('/employment', [EmploymentController::class, 'delete']);
 Route::get('/employment/add', [EmploymentController::class, 'showAddEmployment']);
 Route::post('/employment/add', [EmploymentController::class, 'addEmployment']);

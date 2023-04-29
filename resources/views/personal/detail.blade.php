@@ -3,15 +3,11 @@
 @section('title', 'Панель администратора | Курсы')
 
 @section('content')
-    <div class="row-12 bg-white">
-        <div class="panel p-3 p-md-5 mt-5">
-            <h2 class="panel__title mb-3">
-                Курс - {{$course->caption}}
-            </h2>
-            <div>
-                {!! $course->text !!}
-            </div>
+    <div class="course mt-5 p-sm-3 p-md-5 ">
+        <a class="course__link" href="/private">Назад</a>
+        <h2 class="course__title my-3">Курс - {{ $course->caption }}</h2>
+        <div class="course__desc">
+            {!! $course->text !!}
         </div>
     </div>
-
 @endsection

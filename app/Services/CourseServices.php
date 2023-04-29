@@ -15,7 +15,7 @@ class CourseServices
     public function getListWithPaginate()
     {
         return Course::query()
-            ->paginate(30);
+            ->paginate(10);
     }
 
     public function create($caption, $text)
@@ -46,5 +46,4 @@ class CourseServices
     {
         $this->getById($id)->delete();
     }
-
 }

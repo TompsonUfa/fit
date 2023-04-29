@@ -9,9 +9,8 @@ class PersonalController extends Controller
     public function show(CourseServices $services)
     {
         $courses = $services->getListWithPaginate();
-        return view('personal.list', [
+        return view('personal.index', [
             'courses' => $courses,
         ]);
     }
-
 }
