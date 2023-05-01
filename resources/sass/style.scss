@@ -750,6 +750,10 @@ p {
             &_active {
                 background-color: var(--second-color);
             }
+            button {
+                width: 100%;
+                text-align: left;
+            }
         }
         &__link {
             text-transform: uppercase;
@@ -802,11 +806,19 @@ p {
         height: 65px;
         object-fit: contain;
     }
+    form {
+        display: inline-block;
+    }
     &__btn {
+        border: none;
         display: inline-block;
         cursor: pointer;
         width: 25px;
         height: 25px;
+        background-color: inherit;
+        &:hover {
+            background-color: inherit;
+        }
         svg {
             pointer-events: none;
             width: 100%;
