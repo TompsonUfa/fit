@@ -11,38 +11,78 @@
             <p class="panel__desc mb-3">
                 Количество курсов на сайте: <span class="panel__counter">{{ $total }}</span>
             </p>
-            <a href="{{route('course.add')}}" class="btn btn-success panel__btn mb-3">Добавить курс
+            <a href="{{ route('course.add') }}" class="btn btn-success panel__btn mb-3">
+                Добавить курс
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
             </a>
-        </div>
-        <div class="col-12 mt-5">
-            <table class="table table-bordered">
-                <tr>
-                    <th>#</th>
-                    <th>Caption</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                @foreach($courses as $course)
-                    <tr>
-                        <td>{{$course->id}}</td>
-                        <td>{{$course->caption}}</td>
-                        <td>
-                            <a href="{{route('course.edit', $course->id)}}">edit</a>
-                        </td>
-                        <td>
-                            <form action="{{route('course.delete', $course->id)}}" method="post">
-                                @csrf
-                                <button type="submit">delete</button>
-                            </form>
-                        </td>
-                    </tr>
+            <div class="table-wrapper">
+                <div class="row mb-3">
+                    <div class="col-sm-12 col-md-6 ">
+                        <form action="" class="form-search">
+                            <label class="form-search__label">
+                                Поиск:
+                            </label>
+                            <input autocomplete="off" method="GET" type="search" class="form-search__input form-control"
+                                name="search" id="search" value="{{ $_GET['search'] ?? '' }}">
+                            <button type="submit" class="btn btn-success form-search__btn">Найти</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="align-middle text-center">№</th>
+                                    <th scope="col" class="align-middle text-center">Заголовок курса</th>
+                                    <th scope="col" class="align-middle text-center">Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($courses as $course)
+                                    <tr>
+                                        <td class="align-middle text-center">{{ $course->id }}</td>
+                                        <td class="align-middle text-center">{{ $course->caption }}</td>
+                                        <td class="align-middle text-center">
+                                            <a class="table__btn table__btn_edit mx-2"
+                                                href="{{ route('course.edit', $course->id) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg>
+                                            </a>
+                                            <form action="{{ route('course.delete', $course->id) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="table__btn table__btn_remove mx-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                        class="bi bi-x-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                        <path
+                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg></button>
+                                            </form>
+                                        </td>
 
-                @endforeach
-            </table>
-
-            {{ $courses->links()  }}
-
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-7">
+                        {{ $courses->links() }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 @endsection
