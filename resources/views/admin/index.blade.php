@@ -95,7 +95,6 @@
             </div>
         </div>
     </div>
-
     @vite(['resources/js/app.js'])
     @stack('scripts')
     <script  type="module" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>

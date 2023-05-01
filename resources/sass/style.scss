@@ -930,6 +930,36 @@ p {
         color: var(--red-color);
     }
 }
+.file-manager {
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__title {
+        font-size: 20px;
+    }
+    .file {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        transition: 0.1s linear;
+        font-size: 15px;
+        &__icon {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 45px;
+            height: 45px;
+        }
+        &:hover {
+            background-color: #f5f5f5;
+        }
+    }
+}
 //анимации
 @keyframes showMenu {
     0% {
