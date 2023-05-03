@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    @vite(['resources/sass/app.scss', 'resources/sass/auth.scss', 'resources/js/style-input.js'])
+    @vite(['resources/js/app.js', 'resources/sass/app.scss', 'resources/sass/auth.scss'])
     <title>Фитнес клуб Ө-FIT | Создать новый пароль</title>
 </head>
 
