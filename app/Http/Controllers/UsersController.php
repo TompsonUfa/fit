@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\UsersServices;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -18,6 +19,12 @@ class UsersController extends Controller
             'users' => $users,
             'total' => $total
         ]);
+    }
+
+    public function block()
+    {
+        Auth::logout();
+        return redirect()->route('login')->withErrors(['errors' => 'Аккаунт заморожен.']);
     }
 
     public function showAddUsers()
@@ -70,5 +77,4 @@ class UsersController extends Controller
             'newDate' => $user->access_at->format('Y-m-d H:i:s'),
         ]);
     }
-
 }

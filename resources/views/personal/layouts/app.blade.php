@@ -71,10 +71,15 @@
                         <span class="user-profile__name d-none d-lg-block">{{ auth()->user()->email }}</span>
                     </button>
                     <ul class="dropdown-menu user-profile__menu" aria-labelledby="dropdownMenuButton1">
+                        @if (auth()->user()->role == 1)
+                            <li>
+                                <a class="dropdown-item user-profile__item" href="{{route('admin')}}">Администрирование</a>
+                            </li>  
+                        @endif
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
-                                <button type="submit" class="dropdown-item">
+                                <button type="submit" class="dropdown-item user-profile__item">
                                     Выйти из аккаунта
                                 </button>
                             </form>

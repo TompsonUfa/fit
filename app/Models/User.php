@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,5 +65,19 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role === User::ROLE_ADMIN ? true : false;
+    }
+
+    public function blocked(): bool
+    {
+        if (!$this->role) {
+            $date = Carbon::now();
+            if ($this->blocked_at) {
+                return true;
+            }
+            if ($this->access_at <= $date) {
+                return true;
+            }
+        }
+        return false;
     }
 }
