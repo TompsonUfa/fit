@@ -4,9 +4,11 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\PollitikaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
+Route::get('block', [UsersController::class, 'block'])->name('block');
 
 Route::get('logs', [LogViewerController::class, 'index']);
 
