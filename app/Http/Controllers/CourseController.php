@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CourseRequest;
 use App\Services\CourseServices;
 use Illuminate\Http\Request;
 
 
 class CourseController extends Controller
 {
-
-
     public function list(CourseServices $services)
     {
         return view('admin.course.list', [
@@ -23,7 +22,7 @@ class CourseController extends Controller
         return view('admin.course.add', []);
     }
 
-    public function add_(Request $request, CourseServices $service)
+    public function add_(CourseRequest $request, CourseServices $service)
     {
         $service->create($request->get('title'), $request->get('text'));
         return redirect()
@@ -41,7 +40,7 @@ class CourseController extends Controller
         ]);
     }
 
-    public function edit_($id, Request $request, CourseServices $service)
+    public function edit_($id, CourseRequest $request, CourseServices $service)
     {
         $course = $service->getById($id);
         if (empty($course)) {

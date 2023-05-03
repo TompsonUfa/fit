@@ -533,6 +533,11 @@
                 <li class="menu__item">
                     <a href="tel:+79375810088" class="menu__link">+7 (937) 581-00-88</a>
                 </li>
+                <li class="menu__item">
+                    <a href="{{ route('private') }}" class="menu__link">
+                        Личный кабинет
+                    </a>
+                </li>
             </ul>
             <ul class="menu__social social">
                 <li class="social__item">

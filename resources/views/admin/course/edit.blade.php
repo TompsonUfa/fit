@@ -27,6 +27,15 @@
                     </div>
                     <button class="btn btn-success panel__btn" type="submit">Сохранить</button>
                 </form>
+                @if ($errors->any())
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
