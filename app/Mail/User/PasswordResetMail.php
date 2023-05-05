@@ -32,7 +32,7 @@ class PasswordResetMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Complete Registration Mail',
+            subject: 'Сброс пароля',
         );
     }
 
