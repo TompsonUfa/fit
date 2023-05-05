@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-8 col-sm-10 header__content">
                         <div
-                            class="w-100 mb-lg-2 d-flex justify-content-end justify-content-lg-between align-items-center p-0">
+                            class="w-100 mb-xxl-2 d-flex justify-content-end justify-content-lg-between align-items-center p-0">
                             <ul class="header__contact contact d-lg-flex">
                                 <li class="contact__item">
                                     <a href="https://yandex.ru/maps/-/CCU7Q6b5dD" target="_blank">г. Уфа, ул.
@@ -75,7 +75,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="w-100 p-0 d-none d-lg-block ">
+                        <div class="w-100 p-0 d-none d-xxl-block ">
                             <nav class="header__nav nav-btns">
                                 <div class="nav-btns__item">
                                     <a href="#about" class="nav-btns__link">О школе фитнеса</a>
