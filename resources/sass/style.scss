@@ -1006,6 +1006,13 @@ p {
     display: none;
 }
 // медиа
+@media screen and (max-width: 1400px) {
+    .header {
+        &__logo {
+            width: 75px;
+        }
+    }
+}
 @media screen and (max-width: 1200px) {
     .title {
         font-size: 30px;
