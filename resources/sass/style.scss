@@ -448,6 +448,7 @@ p {
         }
     }
     &__list {
+        overflow-y: auto;
         list-style: none;
     }
     &__item {
