@@ -47,7 +47,6 @@
                                 Секция "ТРУДОУСТРОЙСТВО"
                             </a>
                         </li>
-                        <hr>
                         <li class="nav__item">
                             <a href="{{ route('private') }}" class="nav__link">
                                 Просмотр личного кабинета
@@ -63,7 +62,6 @@
                                 Курсы
                             </a>
                         </li>
-                        <hr>
                         <li class="nav__item">
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf

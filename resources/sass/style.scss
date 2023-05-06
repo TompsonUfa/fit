@@ -722,6 +722,7 @@ p {
         display: none;
     }
     &__content {
+        overflow-y: auto;
         height: 100vh;
         position: -webkit-sticky;
         position: sticky;

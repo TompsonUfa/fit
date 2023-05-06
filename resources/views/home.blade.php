@@ -87,9 +87,6 @@
                                     <a href="#courses" class="nav-btns__link">Курсы</a>
                                 </div>
                                 <div class="nav-btns__item">
-                                    <a href="#posters" class="nav-btns__link">Афиша</a>
-                                </div>
-                                <div class="nav-btns__item">
                                     <a href="#employment" class="nav-btns__link">трудоустройство</a>
                                 </div>
                                 <div class="nav-btns__item">
@@ -251,38 +248,6 @@
                         <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Получить консультацию</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section section__posters posters" id="posters">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">Афиша ближайших мероприятий</h2>
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <p class="section__desc">
-                            Успейте записаться: <a href="tel:+79179030977">+7 (937) 581-00-88</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container section__content">
-            <div class="row">
-                @foreach ($posters as $poster)
-                    <div class="col-12 col-lg-6">
-                        <img class="posters__img mb-4"
-                            data-src="/storage/images/posters/{{ $poster['id'] }}/{{ $poster['img'] . '.webp?=r' . rand(0, 999999) }}"
-                            src="/images/lazy.png" alt="{{ $poster['name'] }}">
-                    </div>
-                @endforeach
-                <div class="col-12 banner posters__banner">
-                    <p class="banner__text">Узнать подробности или записаться на мероприятие</p>
-                    <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Получить консультацию</div>
                 </div>
             </div>
         </div>
@@ -498,11 +463,6 @@
                 <li class="menu__item">
                     <a href="#courses" class="menu__link">
                         Актуальные курсы
-                    </a>
-                </li>
-                <li class="menu__item">
-                    <a href="#posters" class="menu__link">
-                        Афиша
                     </a>
                 </li>
                 <li class="menu__item">
