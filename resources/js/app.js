@@ -6,7 +6,6 @@ import './input';
 import './show-modal'
 import './post-form';
 import './lazy';
-import './slider'
 import './sidebar'
 import './delete'
 import './change-img'
@@ -15,3 +14,4 @@ import './add-users'
 import './user-access'
 import './style-input'
 import './editor'
+import './slider'

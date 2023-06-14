@@ -338,18 +338,9 @@ p {
     }
 }
 // секция преподаватели
-.teacher {
-    .wrapper-img {
-        overflow: hidden;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        border: 4px solid #fe5001;
-    }
-    &__img {
-        object-fit: cover;
-        border-radius: 50%;
-    }
+.teachers {
+    min-height: 100%;
+    background-color: #efefef;
 }
 // секция отзывы
 .employment {
@@ -671,48 +662,121 @@ p {
     }
 }
 // слайдер
+.slick-slide {
+    margin: 0 15px;
+}
 .slider {
-    position: relative;
-    &__wrapper {
-        overflow: hidden;
-    }
-    &__items {
-        position: relative;
-        transition: all 0.5s ease;
-        width: 100%;
-        display: flex;
-    }
+    width: 100%;
+    display: flex;
     &__item {
-        padding: 0px 10px;
-        flex: 0 0 50%;
-        max-width: 50%;
-        height: 500px;
+        border-radius: 25px;
+        background-color: #fff;
+        overflow: hidden;
+        padding: 15px;
+    }
+    &__media {
+        img,
         video {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            max-height: 400px;
             object-fit: cover;
         }
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     &__img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+    }
+    &__content {
+        min-height: 200px;
+        padding: 15px 0;
+    }
+    &__title,
+    &__desc {
+        text-align: center;
+    }
+    &__title {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px !important;
+    }
+    &__desc {
+        font-size: 16px;
+        color: #707070;
     }
     &__btn {
         position: absolute;
-        border: none;
-        background-color: transparent;
         top: 50%;
-        transform: translate(0%, -50%);
-        transition: opacity 0.2s ease;
-        opacity: 0.7;
-        &:hover {
-            opacity: 1;
-        }
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border: 1px solid #e5e5e5;
+        border-radius: 100%;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        transition: 0.3s ease;
+        opacity: 0.8;
         &_prev {
-            left: 50px;
+            left: -55px;
+            svg {
+                transform: translateX(-2px);
+            }
         }
         &_next {
-            right: 50px;
+            right: -55px;
+            svg {
+                transform: rotate(180deg) translateX(-2px);
+            }
         }
+        svg {
+            width: 20px;
+            height: 20px;
+            path {
+                transition: 0.3s ease;
+                fill: #000;
+            }
+        }
+        &:hover {
+            opacity: 1;
+            border: 1px solid var(--first-color);
+            svg {
+                path {
+                    fill: var(--first-color);
+                }
+            }
+        }
+    }
+    .slick-list {
+        border-radius: 25px;
+    }
+    .slick-dots {
+        bottom: -40px;
+    }
+    .slick-dots li.slick-active button::before {
+        opacity: 1;
+        color: var(--first-color);
+    }
+    .slick-dots li button:hover::before,
+    .slick-dots li button:focus::before {
+        opacity: 1;
+        color: var(--first-color);
     }
 }
 // панель администратора
@@ -1015,7 +1079,7 @@ p {
         }
     }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1230px) {
     .title {
         font-size: 30px;
     }
@@ -1088,6 +1152,10 @@ p {
             max-height: 650px;
         }
     }
+    // слайдер
+    .slick-slide {
+        margin: 0 7px;
+    }
 }
 @media screen and (max-width: 991px) {
     .main {
@@ -1150,10 +1218,6 @@ p {
         &__item {
             object-fit: cover;
         }
-    }
-    .teacher .wrapper-img {
-        width: 250px;
-        height: 250px;
     }
     .reasons {
         &__desc {
@@ -1241,24 +1305,6 @@ p {
         &__list {
             font-size: 15px;
             padding-bottom: 30px;
-        }
-    }
-    .slider {
-        &__item {
-            flex: 0 0 100%;
-            max-width: 100%;
-            height: 350px;
-        }
-        &__img {
-            object-fit: contain;
-        }
-        &__btn {
-            &_prev {
-                left: 30px;
-            }
-            &_next {
-                right: 30px;
-            }
         }
     }
 }

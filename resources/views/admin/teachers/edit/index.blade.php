@@ -38,6 +38,13 @@
                         </div>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDesc" class="form-label">Краткое описание</label>
+                            <input type="text" name="desc" class="form-control" id="exampleInputDesc"
+                                value="{{ $teacher->desc }}">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{ $teacher->text }}</textarea>
                     </div>
                 </div>

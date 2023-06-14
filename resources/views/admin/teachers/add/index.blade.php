@@ -36,6 +36,13 @@
                         </div>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDesc" class="form-label">Кратное описание</label>
+                            <input type="text" name="desc" value="{{ old('desc') }}" class="form-control"
+                                id="exampleInputDesc">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{ old('text') }}</textarea>
                     </div>
                 </div>

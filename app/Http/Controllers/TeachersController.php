@@ -43,14 +43,17 @@ class TeachersController extends Controller
     {
         $request->validate([
             'title' => 'required|min:5|max:100',
+            'desc' => 'required|min:5|max:200',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
             'text' => 'required|min:15'
         ]);
         $title = $request->get('title');
+        $desc = $request->get('desc');
         $image = $request->file('image');
         $text = $request->get('text');
         $teacher = teacher::insertGetId([
             'fullName' => $title,
+            'desc' => $desc,
             'text' => $text,
             'img' =>  Str::slug($title),
         ]);
@@ -65,10 +68,12 @@ class TeachersController extends Controller
     {
         $request->validate([
             'title' => 'required|min:5|max:100',
+            'desc' => 'required|min:5|max:200',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
             'text' => 'required|min:15'
         ]);
         $title = $request->get('title');
+        $desc = $request->get('desc');
         $image = $request->file('image');
         $text = $request->get('text');
         $teacher = teacher::find($id);
@@ -80,6 +85,9 @@ class TeachersController extends Controller
         }
         if ($text != $teacher->text) {
             $teacher->text = $text;
+        }
+        if ($desc != $teacher->desc) {
+            $teacher->desc = $desc;
         }
         if (empty($image)) {
             if ($nameImg != $teacher->img) {

@@ -44,12 +44,18 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-    @vite(['resources/sass/app.scss', 'resources/sass/style.scss', 'resources/js/app.js'])
+   <!-- slick -->
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+   <!-- /slick -->
+    @vite(['resources/sass/app.scss', 'resources/sass/style.scss'])
+
     <title>@yield('title')</title>
 </head>
 
 <body>
     @yield('content')
+    @vite('resources/js/app.js')
 </body>
 
 </html>

@@ -33,7 +33,6 @@ class EmploymentServices
             'name' => $name,
             $media =>  Str::slug($name),
         ]);
-
         $filePath = 'media/employment/' . $employment . "/" . str_slug($name) . "." . $file->getClientOriginalExtension();
         if ($itsVideo) {
             Storage::disk('public')->put($filePath, file_get_contents($file));
