@@ -293,7 +293,7 @@
         <div class="container section__content">
             <div class="row">
                 <div class="col-12">
-                    <div class="slider">
+                    <div class="slider slider-teachers">
                         @foreach($teachers as $teacher)
                             <div class="slider__item">
                                 <div class="slider__img">

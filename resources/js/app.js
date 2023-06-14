@@ -5,7 +5,6 @@ import './toggle-answer'
 import './input';
 import './show-modal'
 import './post-form';
-import './lazy';
 import './sidebar'
 import './delete'
 import './change-img'
@@ -15,3 +14,4 @@ import './user-access'
 import './style-input'
 import './editor'
 import './slider'
+import './lazy';
