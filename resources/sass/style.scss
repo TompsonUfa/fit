@@ -125,6 +125,18 @@ p {
         }
     }
 }
+.header-static {
+    background-color: #000;
+    &__logo {
+        width: 100px;
+        height: 100px;
+        img,
+        a {
+            width: inherit;
+            height: inherit;
+        }
+    }
+}
 //основное по секции
 .section {
     min-height: 100vh;
@@ -669,6 +681,7 @@ p {
     width: 100%;
     display: flex;
     &__item {
+        position: relative;
         border-radius: 25px;
         background-color: #fff;
         overflow: hidden;
@@ -763,6 +776,15 @@ p {
             }
         }
     }
+    &__link {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+    }
     .slick-list {
         border-radius: 25px;
     }
@@ -777,6 +799,42 @@ p {
     .slick-dots li button:focus::before {
         opacity: 1;
         color: var(--first-color);
+    }
+}
+// Общий шаблон страницы
+.page {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 25px;
+    &__img {
+        width: 100%;
+        max-width: 400px;
+        img {
+            width: inherit;
+        }
+    }
+    &__title {
+        font-size: 25px;
+        letter-spacing: 0.7px;
+        font-weight: bold;
+        margin-bottom: 15px !important;
+    }
+    &__desc,
+    &__text {
+        font-size: 19px;
+        margin-bottom: 15px !important;
+        font-family: var(--text-font) !important;
+    }
+    &__text {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p {
+            font-size: 19px;
+            margin-bottom: 15px !important;
+        }
     }
 }
 // панель администратора

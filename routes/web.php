@@ -5,6 +5,7 @@ use App\Http\Controllers\BotController;
 use App\Http\Controllers\PollitikaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
@@ -42,3 +43,5 @@ Route::post('/password-update', [LoginController::class, 'PasswordUpdate'])
 
 
 Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
+
+Route::get('/teachers/{name}', [TeacherController::class, 'show']);

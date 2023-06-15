@@ -296,14 +296,15 @@
                     <div class="slider slider-teachers">
                         @foreach($teachers as $teacher)
                             <div class="slider__item">
-                                <div class="slider__img">
-                                    <img data-src="/storage/images/teachers/{{ $teacher['id'] }}/{{ $teacher['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                    src="/images/lazy.png" alt="{{ $teacher['fullName'] }}">
-                                </div>
-                                <div class="slider__content">
-                                    <h5 class="slider__title">{{ $teacher['fullName'] }}</h5>
-                                    <div class="slider__desc">{!! $teacher['desc'] !!}</div>
-                                </div>
+                                    <div class="slider__img">
+                                        <img data-src="/storage/images/teachers/{{ $teacher['id'] }}/{{ $teacher['img'] . '.webp?=r' . rand(0, 999999) }}"
+                                        src="/images/lazy.png" alt="{{ $teacher['fullName'] }}">
+                                    </div>
+                                    <div class="slider__content">
+                                        <h5 class="slider__title">{{ $teacher['fullName'] }}</h5>
+                                        <div class="slider__desc">{!! $teacher['desc'] !!}</div>
+                                    </div>
+                                    <a href="/teachers/{{Str::slug($teacher['fullName'], '-')}}" target="_blank" class="slider__link"></a>
                             </div>
                         @endforeach
                     </div>
