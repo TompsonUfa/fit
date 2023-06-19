@@ -177,18 +177,20 @@
     <section class="section section__directions directions" id="directions">
         <div class="container section__content">
             <div class="row">
-                <div class="col-12 col-lg-6 directions__text">
-                    <h2 class="title directions__title">
-                        {{ $direction->title }}
-                    </h2>
-                    <div class="desc directions__desc">
-                        {!! $direction->text !!}
+                @if(isset($direction))
+                    <div class="col-12 col-lg-6 directions__text">
+                        <h2 class="title directions__title">
+                            {{ $direction->title }}
+                        </h2>
+                        <div class="desc directions__desc">
+                            {!! $direction->text !!}
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <img data-src="/storage/images/direction/shkola-fitnesa-dlya-trenerov-i-instruktorov.webp"
-                        src="/images/lazy.png" alt="Школа фитнеса для тренеров и инструкторов" class="directions__img">
-                </div>
+                    <div class="col-12 col-lg-6">
+                        <img data-src="/storage/images/direction/shkola-fitnesa-dlya-trenerov-i-instruktorov.webp"
+                            src="/images/lazy.png" alt="Школа фитнеса для тренеров и инструкторов" class="directions__img">
+                    </div>
+                @endif
             </div>
         </div>
     </section>

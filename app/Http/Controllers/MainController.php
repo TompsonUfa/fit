@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PageCourse;
-use App\Models\poster;
-use App\Models\teacher;
-use App\Models\employment;
-use App\Models\direction;
+use App\Services\MainServices;
 
 class MainController extends Controller
 {
-    public function show()
+    public function show(MainServices $service)
     {
-        $courses = PageCourse::all();
-        $posters = Poster::orderBy('id', 'desc')->get();
-        $teachers = Teacher::all();
-        $employment = Employment::orderBy('id', 'desc')->get();
-        $direction = Direction::first();
-        return view('home', [
-            'courses' => $courses, 'posters' => $posters, 'teachers' => $teachers,
-            'employment' => $employment, 'direction' => $direction,
-        ]);
+        $domain = $service->getDomain();
+        $data = $service->getData($domain);
+
+        return view('home', $data);
+        // $courses = PageCourse::all();
+        // $posters = Poster::orderBy('id', 'desc')->get();
+        // $teachers = Teacher::all();
+        // $employment = Employment::orderBy('id', 'desc')->get();
+        // $direction = Direction::first();
+        // return view('home', [
+        //     'courses' => $courses, 'posters' => $posters, 'teachers' => $teachers,
+        //     'employment' => $employment, 'direction' => $direction,
+        // ]);
     }
 }
