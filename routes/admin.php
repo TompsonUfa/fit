@@ -14,8 +14,11 @@ Route::get('/', function () {
     return redirect('/admin/directions');
 })->name('admin');
 
-Route::get('/directions', [DirectionsController::class, 'show'])->name('directions');
-Route::post('/directions', [DirectionsController::class, 'edit']);
+Route::get('/directions', [DirectionsController::class, 'show'])->name('admin.directions');
+Route::get('/direction/add', [DirectionsController::class, 'showAddItem']);
+Route::post('/direction/add', [DirectionsController::class, 'add']);
+Route::get('/direction/edit/{id}', [DirectionsController::class, 'showEditItem']);
+Route::post('/direction/edit/{id}', [DirectionsController::class, 'edit']);
 
 Route::get('/page_courses', [PageCourseController::class, 'show'])->name('admin.courses');
 Route::post('/page_courses', [PageCourseController::class, 'delete']);

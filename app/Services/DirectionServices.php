@@ -2,17 +2,28 @@
 
 namespace App\Services;
 
-use App\Models\direction;
+use App\Models\Direction;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class DirectionServices
 {
-    public function show()
+    public function count()
     {
-        return Direction::first();
+        return direction::count();
     }
-    public function edit($title, $text, $file)
+    public function show($search)
+    {
+        if (empty($search)) {
+            $directions = direction::paginate(10);
+        } else {
+            $directions = direction::where('title', 'LIKE', '%' . $search . '%')->paginate(10);
+            $directions->appends(request()->input())->links();
+        }
+        return $directions;
+    }
+    public function edit($city, $title, $text, $file)
     {
         $direction = Direction::first();
 
@@ -23,7 +34,9 @@ class DirectionServices
             if ($direction->text != $text) {
                 $direction->text = $text;
             }
-
+            if ($direction->city_id != $city) {
+                $direction->city_id = $city;
+            }
             $direction->save();
         } else {
             $direction = Direction::insert([
@@ -48,6 +61,20 @@ class DirectionServices
             return response()->json([
                 'errors' => ['Ошибка, попробуйте еще раз.'],
             ], 500);
+        }
+    }
+    public function add($name, $media, $file, $itsVideo)
+    {
+        $direction = Direction::insertGetId([
+            'name' => $name,
+            $media =>  Str::slug($name),
+        ]);
+        $filePath = 'media/directions/' . $direction . "/" . str_slug($name) . "." . $file->getClientOriginalExtension();
+        if ($itsVideo) {
+            Storage::disk('public')->put($filePath, file_get_contents($file));
+        } else {
+            Storage::makeDirectory('/public/media/employment/' . $direction);
+            Image::make($file)->encode('webp', 75)->save(storage_path() . '/app/public/media/directions/' . $direction . "/" . str_slug($name) . '.webp');
         }
     }
 }

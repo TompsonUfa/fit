@@ -8,14 +8,14 @@ use App\Models\teacher;
 use App\Models\employment;
 use App\Models\direction;
 
-class MainServices 
+class MainServices
 {
     public function getDomain()
     {
         return request()->root();
     }
     public function getData($domain)
-    {   
+    {
         $cityId = Cities::where('domain', $domain)->value('id');
         $courses = PageCourse::where('city_id', $cityId)->get();
         $teachers = Teacher::where('city_id', $cityId)->get();

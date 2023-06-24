@@ -25,6 +25,7 @@ class DirectionRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:100',
+            'city' => 'required',
             'text' => 'required|min:15',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
         ];
