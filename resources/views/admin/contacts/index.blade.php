@@ -2,18 +2,18 @@
 
 
 
-@section('title', 'Панель администратора | Курсы')
+@section('title', 'Панель администратора | Контакты')
 
 @section('content')
     <div class="row-12">
         <div class="panel p-3 p-md-5 mt-5">
             <h2 class="panel__title mb-3">
-                Курсы
+                Контакты
             </h2>
             <p class="panel__desc mb-3">
-                Количество курсов на сайте: <span class="panel__counter">{{ $total }}</span>
+                Количество записей на сайте: <span class="panel__counter">{{ $total }}</span>
             </p>
-            <a href="page_courses/add" class="btn btn-success panel__btn mb-3">Добавить курс
+            <a href="contacts/add" class="btn btn-success panel__btn mb-3">Добавить запись
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
@@ -38,28 +38,22 @@
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">Фото</th>
-                                    <th scope="col" class="text-center">Заголовок курса</th>
+                                    <th scope="col" class="text-center">Адрес</th>
                                     <th scope="col" class="text-center">Город</th>
                                     <th scope="col" class="text-center">Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($courses as $course)
-                                    <tr data-item-id={{ $course['id'] }}>
-                                        <td class="align-middle text-center">
-                                            <img class="table__img"
-                                                src="/storage/images/courses/{{ $course['id'] . '/' . $course['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                                alt="{{ $course['title'] }}">
-                                        </td>
-                                        <td class="align-middle table__title text-center">{{ $course['title'] }}</td>
-                                        <td class="align-middle text-center table__title">
-                                            @foreach ($course->city as $city)
+                                @foreach ($contacts as $contact)
+                                    <tr data-item-id={{ $contact['id'] }}>
+                                        <td class="align-middle table__title text-center">{!! $contact['address'] !!}</td>
+                                        <td class="align-middle table__title text-center">
+                                            @foreach ($contact->city as $city)
                                                 {{ $city->name }}
                                             @endforeach
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ url('admin/page_courses/edit') }}{{ '/' . $course['id'] }}"
+                                            <a href="{{ url('admin/contacts/edit') }}{{ '/' . $contact['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                     class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -87,13 +81,12 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-7">
-                        {{ $courses->links() }}
+                        {{ $contacts->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -102,7 +95,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="modal-desc">Вы точно хотите удалить курс?</p>
+                    <p class="modal-desc">Вы точно хотите удалить запись?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -116,5 +109,4 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-
 @endsection

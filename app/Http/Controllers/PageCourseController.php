@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-
+use App\Services\CitiesServices;
 
 class PageCourseController extends Controller
 {
@@ -23,15 +23,16 @@ class PageCourseController extends Controller
         }
         return view('admin.courses.index', ['courses' => $courses, 'total' => $total]);
     }
-    public function showAddCourse(Request $request)
+    public function showAddCourse(Request $request, CitiesServices $cities)
     {
-        return view('admin.courses.add.index');
+        $cities = $cities->list();
+        return view('admin.courses.add.index', ['cities' => $cities]);
     }
-    public function showEditCourse(Request $request, $id)
+    public function showEditCourse(Request $request, $id, CitiesServices $cities)
     {
+        $cities = $cities->list();
         $course = PageCourse::find($id);
-
-        return view('admin.courses.edit.index', ['course' => $course]);
+        return view('admin.courses.edit.index', ['course' => $course, 'cities' => $cities]);
     }
     public function delete(Request $request)
     {
@@ -44,16 +45,21 @@ class PageCourseController extends Controller
         $request->validate([
             'title' => 'required|min:5|max:100',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
+            'city' => 'required',
             'text' => 'required|min:15'
         ]);
         $title = $request->get('title');
         $image = $request->file('image');
         $text = $request->get('text');
+        $cityId = $request->get('city');
+
         $course = PageCourse::insertGetId([
             'title' => $title,
             'text' => $text,
             'img' =>  Str::slug($title),
+            'city_id' => $cityId,
         ]);
+
         Storage::makeDirectory('/public/images/courses/' . $course);
         $loadImg = Image::make($image)->encode('webp', 75);
         $loadImg->save(Storage::path('/public/images/courses/' . $course . "/" .  Str::slug($title) . '.webp'));
@@ -66,11 +72,13 @@ class PageCourseController extends Controller
         $request->validate([
             'title' => 'required|min:5|max:100',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
+            'city' => 'required',
             'text' => 'required|min:15'
         ]);
         $title = $request->get('title');
         $image = $request->file('image');
         $text = $request->get('text');
+        $cityId = $request->get('city');
         $course = PageCourse::find($id);
         if ($title != $course->title) {
             $course->title = $title;
@@ -80,6 +88,9 @@ class PageCourseController extends Controller
         }
         if ($text != $course->text) {
             $course->text = $text;
+        }
+        if ($cityId != $course->city_id) {
+            $course->city_id = $cityId;
         }
         if (empty($image)) {
             if ($nameImg != $course->img) {

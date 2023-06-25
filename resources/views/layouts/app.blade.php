@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Школа фитнеса «O-fit»: обучаем фитнес инструкторов с нуля в г. Уфа. ☛ Гибкая система оплаты. ☛ Большой выбор программ обучения. ☛ По окончанию курсов выдается диплом государственного образца. ☎️ Звоните +7 (937) 581-00-88">
+        content="{{$cityDesc}}">
     <meta name="Keywords"
-        content="Школа фитнеса,фитнес уфа,спорт обучение,обучение,тренер обучение, тренер, Школа фитнеса в Уфе, фитнес клуб Ө-FIT, фитнес клуб O-FIT, фитнес клуб О-FIT , фитнес клуб О ФИТ">
+        content="{{$cityKeyWords}}">
     <meta property="og:image" content="/images/about.jpg" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-site-verification" content="tpFlWYoZEdQMgDxldMIgHMdkyrsfG0PYI7nDQE6at9I" />

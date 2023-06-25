@@ -39,7 +39,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">Фото</th>
-                                    <th scope="col">ФИО</th>
+                                    <th scope="col" class="text-center">ФИО</th>
+                                    <th scope="col" class="text-center">Город</th>
                                     <th scope="col" class="text-center">Действия</th>
                                 </tr>
                             </thead>
@@ -51,7 +52,12 @@
                                                 src="/storage/images/teachers/{{ $teacher['id'] . '/' . $teacher['img'] . '.webp?=r' . rand(0, 999999) }}"
                                                 alt="{{ $teacher['fullName'] }}">
                                         </td>
-                                        <td class="align-middle table__title">{{ $teacher['fullName'] }}</td>
+                                        <td class="align-middle table__title text-center">{{ $teacher['fullName'] }}</td>
+                                        <td class="align-middle text-center table__title">
+                                            @foreach ($teacher->city as $city)
+                                                {{ $city->name }}
+                                            @endforeach
+                                        </td>
                                         <td class="align-middle text-center">
                                             <a href="{{ url('admin/teachers/edit') }}{{ '/' . $teacher['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">

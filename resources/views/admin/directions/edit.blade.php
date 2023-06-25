@@ -21,7 +21,7 @@
                             <div class="file-input">
                                 @if (isset($direction))
                                     <img class="prev-img mb-3"
-                                        src="/storage/images/direction/{{ $direction->img . '.webp?=r' . rand(0, 999999) }}">
+                                        src="/storage/media/directions/{{$direction->id . '/' . $direction->img . '.webp?=r' . rand(0, 999999) }}">
                                 @else
                                     <img class="prev-img mb-3 d-block" src="/images/no-image.webp">
                                 @endif

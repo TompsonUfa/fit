@@ -31,6 +31,24 @@
                         </div>
                     </div>
                     <div class="col-12">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Город</label>
+                            <select name="city" class="form-select" id="inputGroupSelect01">
+                                @foreach ($cities as $city)
+                                    @if($city->id == $course->city_id)
+                                        <option selected value={{$city->id}}>
+                                            {{$city->name}}
+                                        </option>
+                                    @else
+                                        <option value={{$city->id}}>
+                                            {{$city->name}}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <div class="mb-3">
                             <label for="exampleInputTitle" class="form-label">Заголовок курса</label>
                             <input type="text" name="title" class="form-control" id="exampleInputTitle"

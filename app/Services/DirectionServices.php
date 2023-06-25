@@ -23,9 +23,14 @@ class DirectionServices
         }
         return $directions;
     }
-    public function edit($city, $title, $text, $file)
+    public function find($id)
     {
-        $direction = Direction::first();
+       return $Direction = Direction::find($id);
+    }
+    public function edit($id, $city, $title, $text, $file)
+    {
+        $direction = Direction::find($id);
+        $loadImg = true;
 
         if (isset($direction)) {
             if ($direction->title != $title) {
@@ -42,16 +47,25 @@ class DirectionServices
             $direction = Direction::insert([
                 'title' => $title,
                 'text' => $text,
-                'img' =>  "shkola-fitnesa-dlya-trenerov-i-instruktorov",
+                'city_id' => $city,
+                'img' =>  Str::slug($title),
             ]);
         }
 
-        $loadImg = true;
-
-        if (isset($file) && $direction) {
-            Storage::makeDirectory('/public/images/direction/');
-            $loadImg = Image::make($file)->encode('webp', 75)->save(storage_path() . '/app/public/images/direction/shkola-fitnesa-dlya-trenerov-i-instruktorov.webp');
+        if (empty($file)) {
+            if (Str::slug($title) != $direction->img) {
+                $loadImg = Storage::move('public/media/directions/' . $direction->id . '/' . $direction->img . '.webp', 'public/media/directions/' . $direction->id . '/' . str_slug($title) . '.webp');
+                $direction->img = Str::slug($title);
+            } 
+        } else {
+            if (Str::slug($title) != $direction->img) {
+                Storage::delete('public/media/directions/' . $direction->id . '/' . $direction->img . '.webp');
+            }
+            $loadImg = Image::make($file)->encode('webp', 75)->save(storage_path() . '/app/public/media/directions/' . $direction->id . "/" .  str_slug($title) . '.webp');
+            $direction->img = Str::slug($title);
         }
+
+        $direction->save();
 
         if ($loadImg && $direction) {
             return response()->json([
@@ -63,18 +77,22 @@ class DirectionServices
             ], 500);
         }
     }
-    public function add($name, $media, $file, $itsVideo)
+    public function add($city, $title, $text, $file)
     {
         $direction = Direction::insertGetId([
-            'name' => $name,
-            $media =>  Str::slug($name),
+            'title' => $title,
+            'text' => $text,
+            'city_id'=> $city,
+            'img' =>  Str::slug($title),
         ]);
-        $filePath = 'media/directions/' . $direction . "/" . str_slug($name) . "." . $file->getClientOriginalExtension();
-        if ($itsVideo) {
-            Storage::disk('public')->put($filePath, file_get_contents($file));
-        } else {
-            Storage::makeDirectory('/public/media/employment/' . $direction);
-            Image::make($file)->encode('webp', 75)->save(storage_path() . '/app/public/media/directions/' . $direction . "/" . str_slug($name) . '.webp');
-        }
+        $filePath = 'media/directions/' . $direction . "/" . str_slug($title) . "." . $file->getClientOriginalExtension();
+
+        Storage::makeDirectory('/public/media/directions/' . $direction);
+        Image::make($file)->encode('webp', 75)->save(storage_path() . '/app/public/media/directions/' . $direction . "/" . str_slug($title) . '.webp');
+    }
+    public function delete($id)
+    {
+        $direction = direction::find($id);
+        $direction->delete();
     }
 }

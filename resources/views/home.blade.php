@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">
-                        <img data-src="/storage/images/direction/{{ $direction->img . '.webp?=r' . rand(0, 999999) }}"
+                        <img data-src="/storage/media/directions/{{ $direction->id . '/' .$direction->img . '.webp?=r' . rand(0, 999999) }}"
                             src="/images/lazy.png" alt="Школа фитнеса для тренеров и инструкторов" class="directions__img">
                     </div>
                 @endif

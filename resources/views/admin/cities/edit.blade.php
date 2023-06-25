@@ -1,6 +1,6 @@
 @extends('admin.index')
 
-@section('title', 'Панель администратора | Добавить новую запись')
+@section('title', 'Панель администратора | Редактировать Город')
 
 @section('content')
     <div class="row-12">
@@ -8,48 +8,43 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="panel__title mb-3">
-                        Добавить запись
+                        Редактировать Город
                     </h2>
                 </div>
             </div>
             <form action="" method="POST" enctype="multipart/form-data" class="sending-post">
                 @csrf
-                <div class="row justify-content-center mb-3">
-                    <div class="col-12 text-center mb-3">
-                        <div class="col-12">
-                            <div class="file-input">
-                                <img class="prev-img mb-3" src="/images/no-image.webp">
-                                <p class="prev-name mb-3"></p>
-                                <input type="file" id="file" name="file" class="file"
-                                    accept=".jpg,.png,.jpeg,.gif,.webp,.svg,.mp4">
-                                <label for="file" class="btn btn-success">
-                                    Добавить фотографию или видео
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row justify-content-center mb-3">                    
                     <div class="col-12">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Город</label>
-                            <select name="city" class="form-select" id="inputGroupSelect01">
-                                @foreach ($cities as $city)
-                                        <option value={{$city->id}}>{{$city->name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="mb-3">
+                            <label for="exampleInputTitle" class="form-label">Название города</label>
+                            <input type="text" name="name" class="form-control" id="exampleInputTitle" value="{{$city->name}}">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="exampleInputTitle" class="form-label">Заголовок записи</label>
-                            <input type="text" name="title" class="form-control" id="exampleInputTitle">
+                            <label for="exampleInputDomain" class="form-label">Домен</label>
+                            <input type="text" name="domain" class="form-control" id="exampleInputDomain" value="{{$city->domain}}">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDesc" class="form-label">Описание (SEO)</label>
+                            <input type="text" name="desc" class="form-control" id="exampleInputDesc" value="{{$city->desc}}"> 
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputWords" class="form-label">Ключевые слова (SEO)</label>
+                            <input type="text" name="keywords" class="form-control" id="exampleInputWords" value="{{$city->keywords}}">
                         </div>
                     </div>
                 </div>
                 <button class="btn btn-success panel__btn" type="submit">Сохранить</button>
             </form>
         </div>
-
     </div>
+    <div class="alert alert-success position-fixed" style="display:none; bottom: 25px; right: 25px" role="alert"></div>
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -58,7 +53,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
@@ -72,3 +66,4 @@
         </div>
     </div>
 @endsection
+

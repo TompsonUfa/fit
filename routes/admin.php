@@ -9,16 +9,19 @@ use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\EmploymentController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\ContactsController;
 
 Route::get('/', function () {
     return redirect('/admin/directions');
 })->name('admin');
 
 Route::get('/directions', [DirectionsController::class, 'show'])->name('admin.directions');
-Route::get('/direction/add', [DirectionsController::class, 'showAddItem']);
-Route::post('/direction/add', [DirectionsController::class, 'add']);
-Route::get('/direction/edit/{id}', [DirectionsController::class, 'showEditItem']);
-Route::post('/direction/edit/{id}', [DirectionsController::class, 'edit']);
+Route::post('/directions', [DirectionsController::class, 'delete']);
+Route::get('/directions/add', [DirectionsController::class, 'showAddItem']);
+Route::post('/directions/add', [DirectionsController::class, 'add']);
+Route::get('/directions/edit/{id}', [DirectionsController::class, 'showEditItem']);
+Route::post('/directions/edit/{id}', [DirectionsController::class, 'edit']);
 
 Route::get('/page_courses', [PageCourseController::class, 'show'])->name('admin.courses');
 Route::post('/page_courses', [PageCourseController::class, 'delete']);
@@ -48,7 +51,7 @@ Route::post('/employment/add', [EmploymentController::class, 'addEmployment']);
 Route::get('/employment/edit/{id}', [EmploymentController::class, 'showEditEmployment']);
 Route::post('/employment/edit/{id}', [EmploymentController::class, 'editEmployment']);
 
-Route::get('/users', [UsersController::class, 'show'])->name('users');
+Route::get('/users', [UsersController::class, 'show'])->name('admin.users');
 Route::get('/users/add', [UsersController::class, 'showAddUsers']);
 Route::post('/users/add', [UsersController::class, 'add']);
 Route::post('/users/blocked', [UsersController::class, 'blocked']);
@@ -62,6 +65,19 @@ Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course
 Route::post('/course/edit_/{id}', [CourseController::class, 'edit_'])->name('course.edit_');
 Route::post('/course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
 
+Route::get('/cities', [CitiesController::class, 'show'])->name('admin.cities');
+Route::post('/cities', [CitiesController::class, 'delete']);
+Route::get('/cities/add', [CitiesController::class, 'showAddItem']);
+Route::post('/cities/add', [CitiesController::class, 'add']);
+Route::get('/cities/edit/{id}', [CitiesController::class, 'showEditItem'])->name('cities.edit');
+Route::post('/cities/edit/{id}', [CitiesController::class, 'edit']);
+
+Route::get('/contacts', [ContactsController::class, 'show'])->name('admin.contacts');
+Route::post('/contacts', [ContactsController::class, 'delete']);
+Route::get('/contacts/add', [ContactsController::class, 'add']);
+Route::post('/contacts/add', [ContactsController::class, 'add_']);
+Route::get('/contacts/edit/{id}', [ContactsController::class, 'edit']);
+Route::post('/contacts/edit/{id}', [ContactsController::class, 'edit_']);
 
 Route::post('/media/upload', [MediaController::class, 'upload']);
 Route::get('/media/manager', [MediaController::class, 'manager']);

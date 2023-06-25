@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DirectionRequest extends FormRequest
+class CitiesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class DirectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:100',
-            'city' => 'required',
-            'text' => 'required|min:15',
-            'img' => 'required|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
+            'name' => 'required|max:50',
+            'domain' => 'required|max:50',
+            'desc' => 'required|max:350',
+            'keywords' => 'required|max:350',
         ];
     }
 }

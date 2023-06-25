@@ -32,11 +32,11 @@
                                 Секция "Курсы"
                             </a>
                         </li>
-                        <li class="nav__item {{ request()->is('admin/posters*') ? 'nav__item_active' : null }}">
+                        {{-- <li class="nav__item {{ request()->is('admin/posters*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/posters') }}" class="nav__link">
                                 Секция "Афиши"
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav__item {{ request()->is('admin/teachers*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/teachers') }}" class="nav__link">
                                 Секция "ПРЕПОДАВАТЕЛИ"
@@ -47,6 +47,11 @@
                                 Секция "ТРУДОУСТРОЙСТВО"
                             </a>
                         </li>
+                        <li class="nav__item {{ request()->is('admin/contacts*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/contacts') }}" class="nav__link">
+                                Секция "Контакты"
+                            </a>
+                        </li>
                         <li class="nav__item">
                             <a href="{{ route('private') }}" class="nav__link">
                                 Просмотр личного кабинета
@@ -55,6 +60,11 @@
                         <li class="nav__item {{ request()->is('admin/users*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/users') }}" class="nav__link">
                                 Пользователи
+                            </a>
+                        </li>
+                        <li class="nav__item {{ request()->is('admin/cities*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/cities') }}" class="nav__link">
+                                Города
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/course*') ? 'nav__item_active' : null }}">

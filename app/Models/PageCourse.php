@@ -17,4 +17,8 @@ class PageCourse extends Model
         'text',
         'img',
     ];
+    public function city()
+    {
+        return $this->hasMany(Cities::class, 'id', 'city_id');
+    }
 }

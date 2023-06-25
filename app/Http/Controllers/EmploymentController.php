@@ -9,44 +9,45 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\AddEmploymentRequest;
 use App\Services\EmploymentServices;
+use App\Services\CitiesServices;
 
 class EmploymentController extends Controller
 {
     public function show(Request $request, EmploymentServices $service)
     {
         $search = $request->get('search');
-
         $total = $service->count();
         $employment = $service->show($search);
-
         return view('admin.employment.index', ['employment' => $employment, 'total' => $total]);
     }
     public function delete(Request $request, EmploymentServices $service)
     {
         $employmentId = $request->get('id');
-
         $service->delete($employmentId);
     }
-    public function showAddEmployment(Request $request)
+    public function showAddEmployment(Request $request, CitiesServices $cities)
     {
-        return view('admin.employment.add.index');
+        $cities = $cities->list();
+        return view('admin.employment.add.index', ['cities' => $cities]);
     }
     public function addEmployment(AddEmploymentRequest $request, EmploymentServices $service)
     {
         $name = $request->get('title');
         $file = $request->file('file');
+        $city = $request->get('city');
 
-        $service->add($name, $request->media, $file, $request->itsVideo);
+        $service->add($name, $request->media, $file, $request->itsVideo, $city);
 
         return response()
             ->json([
                 'url' => route('admin.employment')
             ]);
     }
-    public function showEditEmployment(Request $request, $id)
+    public function showEditEmployment(Request $request, $id , CitiesServices $cities)
     {
+        $cities = $cities->list();
         $employment = employment::find($id);
-        return view('admin.employment.edit.index', ['employment' => $employment]);
+        return view('admin.employment.edit.index', ['employment' => $employment, 'cities' => $cities]);
     }
     public function editEmployment(Request $request, $id)
     {
@@ -63,10 +64,12 @@ class EmploymentController extends Controller
         $request->validate([
             'title' => 'required|min:5|max:100',
             'file' => $validFile,
+            'city' => 'required',
         ]);
 
         $title = $request->get('title');
         $file = $request->file('file');
+        $city = $request->get('city');
         $employment = employment::find($id);
 
         if ($title != $employment->name) {
@@ -75,7 +78,9 @@ class EmploymentController extends Controller
         } else {
             $nameFile = Str::slug($employment->name);
         }
-
+        if ($city != $employment->city_id) {
+            $employment->city_id = $city;
+        }
         if (empty($file)) {
             if ($nameFile != $employment->img && !empty($employment->img)) {
                 Storage::move('public/media/employment/' . $employment->id . '/' . $employment->img . '.webp', 'public/media/employment/' . $employment->id . '/' . $nameFile . '.webp');

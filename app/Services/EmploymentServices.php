@@ -27,11 +27,12 @@ class EmploymentServices
         $employment = employment::find($id);
         $employment->delete();
     }
-    public function add($name, $media, $file, $itsVideo)
+    public function add($name, $media, $file, $itsVideo, $city)
     {
         $employment = Employment::insertGetId([
             'name' => $name,
             $media =>  Str::slug($name),
+            'city_id' => $city,
         ]);
         $filePath = 'media/employment/' . $employment . "/" . str_slug($name) . "." . $file->getClientOriginalExtension();
         if ($itsVideo) {

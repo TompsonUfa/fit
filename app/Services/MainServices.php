@@ -16,12 +16,17 @@ class MainServices
     }
     public function getData($domain)
     {
-        $cityId = Cities::where('domain', $domain)->value('id');
+        
+        $city = Cities::where('domain', $domain);
+        $cityId = $city->value('id');
+        $cityDesc = $city->value('desc');
+        $cityKeyWords = $city->value('keywords');
         $courses = PageCourse::where('city_id', $cityId)->get();
         $teachers = Teacher::where('city_id', $cityId)->get();
         $employment = Employment::where('city_id', $cityId)->orderBy('id', 'desc')->get();
         $direction = Direction::where('city_id', $cityId)->first();
         return [
+            'cityDesc' => $cityDesc, 'cityKeyWords' => $cityKeyWords,
             'courses' => $courses, 'teachers' => $teachers,
             'employment' => $employment, 'direction' => $direction,
         ];

@@ -13,7 +13,7 @@
             <p class="panel__desc mb-3">
                 Количество записей на сайте: <span class="panel__counter">{{ $total }}</span>
             </p>
-            <a href="direction/add" class="btn btn-success panel__btn mb-3">Добавить запись
+            <a href="directions/add" class="btn btn-success panel__btn mb-3">Добавить запись
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path
@@ -39,21 +39,21 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">Заголовок записи</th>
-                                    <th scope="col">Город</th>
+                                    <th scope="col" class="text-center">Город</th>
                                     <th scope="col" class="text-center">Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($directions as $direction)
                                     <tr data-item-id={{ $direction['id'] }}>
-                                        <td class="align-middle table__title">{{ $direction['title'] }}</td>
-                                        <td class="align-middle table__title">
+                                        <td class="align-middle table__title text-center">{{ $direction['title'] }}</td>
+                                        <td class="align-middle table__title text-center">
                                             @foreach ($direction->city as $city)
                                                 {{ $city->name }}
                                             @endforeach
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="{{ url('admin/direction/edit') }}{{ '/' . $direction['id'] }}"
+                                            <a href="{{ url('admin/directions/edit') }}{{ '/' . $direction['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                     class="bi bi-pencil-square" viewBox="0 0 16 16">

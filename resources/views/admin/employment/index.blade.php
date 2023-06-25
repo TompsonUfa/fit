@@ -39,7 +39,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">Файл</th>
-                                    <th scope="col">Заголовок записи</th>
+                                    <th scope="col" class="text-center">Заголовок записи</th>
+                                    <th scope="col" class="text-center">Город</th>
                                     <th scope="col" class="text-center">Действия</th>
                                 </tr>
                             </thead>
@@ -55,7 +56,12 @@
                                                     alt="{{ $item['title'] }}">
                                             @endif
                                         </td>
-                                        <td class="align-middle table__title">{{ $item['name'] }}</td>
+                                        <td class="align-middle table__title text-center">{{ $item['name'] }}</td>
+                                        <td class="align-middle text-center table__title">
+                                            @foreach ($item->city as $city)
+                                                {{ $city->name }}
+                                            @endforeach
+                                        </td>
                                         <td class="align-middle text-center">
                                             <a href="{{ url('admin/employment/edit') }}{{ '/' . $item['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">
