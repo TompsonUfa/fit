@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InfosController;
 use App\Http\Controllers\DirectionsController;
 use App\Http\Controllers\PageCourseController;
 use App\Http\Controllers\CourseController;
@@ -15,6 +16,13 @@ use App\Http\Controllers\ContactsController;
 Route::get('/', function () {
     return redirect('/admin/directions');
 })->name('admin');
+
+Route::get('/infos', [InfosController::class, 'show'])->name('admin.infos');
+Route::post('/infos', [InfosController::class, 'delete']);
+Route::get('/infos/add', [InfosController::class, 'add']);
+Route::post('/infos/add', [InfosController::class, 'add_']);
+Route::get('/infos/edit/{id}', [InfosController::class, 'edit']);
+Route::post('/infos/edit/{id}', [InfosController::class, 'edit_']);
 
 Route::get('/directions', [DirectionsController::class, 'show'])->name('admin.directions');
 Route::post('/directions', [DirectionsController::class, 'delete']);

@@ -46,11 +46,25 @@ class ContactsController extends Controller
         $contact = $service->find($id);
         return view('admin.contacts.edit', ['cities' => $cities, 'contact' => $contact]);
     }
-    public function edit_($id, ContactsRequest $request, ContactsServices $service)
+    public function edit_($id, Request $request, ContactsServices $service)
     {
+        $contact = $service->find($id);
         $city = $request->get('city');
         $address = $request->get('address');
         $desc = $request->get('desc');
+
+        if ($contact['city_id'] == $city) {
+            $cityValid = 'required';
+        } else {
+            $cityValid = 'required|unique:contacts,city_id';
+        }
+
+        $request->validate([
+            'address' => 'required',
+            'desc' => 'required',
+            'city' => $cityValid
+        ]);
+
         $edit = $service->edit($id, $city, $address, $desc);
         if ($edit) {
             return response()->json(['url' => route('admin.contacts')]);

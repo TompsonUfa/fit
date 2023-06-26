@@ -22,6 +22,21 @@
                         <img src="/logo.png" alt="ШКОЛА ФИТНЕСА «Ө-FIT»">
                     </div>
                     <ul class="sidebar__nav nav">
+                        {{-- <li class="nav__item {{ request()->is('admin/posters*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/posters') }}" class="nav__link">
+                                Секция "Афиши"
+                            </a>
+                        </li> --}}
+                        <li class="nav__item {{ request()->is('admin/infos*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/infos') }}" class="nav__link">
+                                Секция "Информация"
+                            </a>
+                        </li>
+                        <li class="nav__item {{ request()->is('admin/about*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/about') }}" class="nav__link">
+                                Секция "О школе"
+                            </a>
+                        </li>
                         <li class="nav__item {{ request()->is('admin/directions*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/directions') }}" class="nav__link">
                                 Секция "Направления"
@@ -32,11 +47,11 @@
                                 Секция "Курсы"
                             </a>
                         </li>
-                        {{-- <li class="nav__item {{ request()->is('admin/posters*') ? 'nav__item_active' : null }}">
-                            <a href="{{ url('admin/posters') }}" class="nav__link">
-                                Секция "Афиши"
+                        <li class="nav__item {{ request()->is('admin/training*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/training') }}" class="nav__link">
+                                Секция "Для кого обучение"
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="nav__item {{ request()->is('admin/teachers*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/teachers') }}" class="nav__link">
                                 Секция "ПРЕПОДАВАТЕЛИ"
@@ -45,6 +60,11 @@
                         <li class="nav__item {{ request()->is('admin/employment*') ? 'nav__item_active' : null }}">
                             <a href="{{ url('admin/employment') }}" class="nav__link">
                                 Секция "ТРУДОУСТРОЙСТВО"
+                            </a>
+                        </li>
+                        <li class="nav__item {{ request()->is('admin/reasons*') ? 'nav__item_active' : null }}">
+                            <a href="{{ url('admin/reasons') }}" class="nav__link">
+                                Секция "5 причин"
                             </a>
                         </li>
                         <li class="nav__item {{ request()->is('admin/contacts*') ? 'nav__item_active' : null }}">
