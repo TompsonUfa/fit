@@ -398,18 +398,11 @@
         <div class="container">
             <h5 class="footer__title">Контакты</h5>
             <address class="footer__address">
-                Г. Уфа, ул. Коммунистическая, д. 67 <br>
-                Башкирский институт физической культуры (филиал) ФГБОУ ВО «УралГУФК», Аудитория №4
+                {!!$contact->address!!}
             </address>
-            <p class="footer__contact">
-                Подробности и запись на курсы:<br>
-                Телефон: <a href="tel:+79375810088">+7 (937) 581-00-88</a> Степан Анисимов<br>
-                Email: <a href="mailto:o-fitschool@mail.ru">o-fitschool@mail.ru</a><br>
-                ИП Горбатова Вера Константиновна<br>
-                ИНН: 165113742290<br>
-                ОГРНИП: 322169000210158<br>
-                Сайт не является публичной офертой и носит информационный характер
-            </p>
+            <div class="footer__contact">
+                {!!$contact->desc!!}
+            </div>
         </div>
     </footer>
     <div class="menu">

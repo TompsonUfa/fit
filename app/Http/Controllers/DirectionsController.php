@@ -31,18 +31,25 @@ class DirectionsController extends Controller
     }
     public function edit($id, Request $request, DirectionServices $service)
     {
-        $request->validate([
-            'title' => 'required|min:5|max:100',
-            'city' => 'required',
-            'text' => 'required|min:15',
-            'img' => 'image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
-        ]);
 
+        $direction = $service->find($id);
         $city = $request->get('city');
         $title = $request->get('title');
         $text = $request->get('text');
         $file = $request->file('image');
 
+        if ($direction['city_id'] == $city) {
+            $cityValid = 'required';
+        } else {
+            $cityValid = 'required|unique:directions,city_id';
+        }
+
+        $request->validate([
+            'title' => 'required|min:5|max:100',
+            'city' => $cityValid,
+            'text' => 'required|min:15',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
+        ]);
         return $service->edit($id, $city, $title, $text, $file);
     }
     public function add(DirectionRequest $request, DirectionServices $service)
@@ -55,9 +62,9 @@ class DirectionsController extends Controller
         $service->add($city, $title, $text, $file);
 
         return response()
-        ->json([
-            'url' => route('admin.directions')
-        ]);
+            ->json([
+                'url' => route('admin.directions')
+            ]);
     }
     public function delete(Request $request, DirectionServices $service)
     {

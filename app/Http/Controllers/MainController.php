@@ -10,7 +10,6 @@ class MainController extends Controller
     {
         $domain = $service->getDomain();
         $data = $service->getData($domain);
-
         return view('home', $data);
     }
 }
