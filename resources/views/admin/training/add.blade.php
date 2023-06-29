@@ -1,6 +1,6 @@
 @extends('admin.index')
 
-@section('title', 'Панель администратора | Добавить информацию')
+@section('title', 'Панель администратора | Добавить запись')
 
 @section('content')
     <div class="row-12">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="panel__title mb-3">
-                        Добавить информацию
+                        Добавить запись
                     </h2>
                 </div>
             </div>

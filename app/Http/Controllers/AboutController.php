@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\infosServices;
+use App\Services\AboutServices;
 use App\Services\CitiesServices;
-use App\Http\Requests\InfosRequest;
+use App\Http\Requests\AboutRequest;
 
-class InfosController extends Controller
+class AboutController extends Controller
 {
-    public function show(Request $request, infosServices $service)
+    public function show(Request $request, AboutServices $service)
     {
         $total = $service->total();
         $search = $request->get('search');
-        $infos = $service->paginate($search);
-        return view('admin.infos.index', ['infos' => $infos, 'total' => $total]);
+        $items = $service->paginate($search);
+        return view('admin.about.index', ['items' => $items, 'total' => $total]);
     }
     public function add(CitiesServices $cities)
     {
         $cities = $cities->list();
-        return view('admin.infos.add', ['cities' => $cities]);
+        return view('admin.about.add', ['cities' => $cities]);
     }
-    public function add_(InfosRequest $request, infosServices $service)
+    public function add_(AboutRequest $request, AboutServices $service)
     {
         $title = $request->get('title');
         $image = $request->file('image');
@@ -29,24 +29,24 @@ class InfosController extends Controller
         $cityId = $request->get('city');
         return $service->add($title, $image, $text, $cityId);
     }
-    public function edit($id, infosServices $service, CitiesServices $cities)
+    public function edit($id, AboutServices $service, CitiesServices $cities)
     {
-        $info = $service->find($id);
+        $item = $service->find($id);
         $cities = $cities->list();
-        return view('admin.infos.edit', ['info' => $info, 'cities' => $cities]);
+        return view('admin.about.edit', ['item' => $item, 'cities' => $cities]);
     }
-    public function edit_(Request $request, $id, infosServices $service)
+    public function edit_(Request $request, $id, AboutServices $service)
     {
-        $info = $service->find($id);
+        $item = $service->find($id);
         $title = $request->get('title');
         $image = $request->file('image');
         $text = $request->get('text');
         $cityId = $request->get('city');
 
-        if ($info['city_id'] == $cityId) {
+        if ($item['city_id'] == $cityId) {
             $cityValid = 'required';
         } else {
-            $cityValid = 'required|unique:infos,city_id';
+            $cityValid = 'required|unique:about,city_id';
         }
 
         $request->validate([
@@ -58,7 +58,7 @@ class InfosController extends Controller
 
         return $service->edit($id, $title, $image, $text, $cityId);
     }
-    public function delete(Request $request, infosServices $service)
+    public function delete(Request $request, AboutServices $service)
     {
         $id = $request->get('id');
         return $service->delete($id);

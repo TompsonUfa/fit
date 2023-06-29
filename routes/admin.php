@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InfosController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DirectionsController;
 use App\Http\Controllers\PageCourseController;
 use App\Http\Controllers\CourseController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\TrainingController;
 
 Route::get('/', function () {
     return redirect('/admin/directions');
@@ -23,6 +25,20 @@ Route::get('/infos/add', [InfosController::class, 'add']);
 Route::post('/infos/add', [InfosController::class, 'add_']);
 Route::get('/infos/edit/{id}', [InfosController::class, 'edit']);
 Route::post('/infos/edit/{id}', [InfosController::class, 'edit_']);
+
+Route::get('/about', [AboutController::class, 'show'])->name('admin.about');
+Route::post('/about', [AboutController::class, 'delete']);
+Route::get('/about/add', [AboutController::class, 'add']);
+Route::post('/about/add', [AboutController::class, 'add_']);
+Route::get('/about/edit/{id}', [AboutController::class, 'edit']);
+Route::post('/about/edit/{id}', [AboutController::class, 'edit_']);
+
+Route::get('/training', [TrainingController::class, 'show'])->name('admin.training');
+Route::post('/training', [TrainingController::class, 'delete']);
+Route::get('/training/add', [TrainingController::class, 'add']);
+Route::post('/training/add', [TrainingController::class, 'add_']);
+Route::get('/training/edit/{id}', [TrainingController::class, 'edit']);
+Route::post('/training/edit/{id}', [TrainingController::class, 'edit_']);
 
 Route::get('/directions', [DirectionsController::class, 'show'])->name('admin.directions');
 Route::post('/directions', [DirectionsController::class, 'delete']);
