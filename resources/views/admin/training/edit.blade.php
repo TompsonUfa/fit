@@ -19,7 +19,7 @@
                         <div class="col-12">
                             <div class="file-input">
                                 <img class="prev-img mb-3"
-                                src="/storage/media/about/{{ $item->id }}/{{ Str::slug($item->img) . '.webp?=r' . rand(0, 999999) }}">
+                                src="/storage/media/training/{{ $item->id }}/{{ Str::slug($item->img) . '.webp?=r' . rand(0, 999999) }}">
                                 <p class="prev-name mb-3"></p>
                                 <input type="file" id="image" name="image" class="file"
                                     accept=".jpg,.png,.jpeg,.gif,.webp,.svg">
@@ -55,7 +55,7 @@
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{$item->text}}</textarea>
                     </div>
                 </div>
-                <button class="btn btn-success panel__btn" type="submit">Создать</button>
+                <button class="btn btn-success panel__btn" type="submit">Сохранить</button>
             </form>
         </div>
 

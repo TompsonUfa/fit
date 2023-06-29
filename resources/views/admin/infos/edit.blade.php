@@ -55,7 +55,7 @@
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{$info->text}}</textarea>
                     </div>
                 </div>
-                <button class="btn btn-success panel__btn" type="submit">Создать</button>
+                <button class="btn btn-success panel__btn" type="submit">Сохранить</button>
             </form>
         </div>
 

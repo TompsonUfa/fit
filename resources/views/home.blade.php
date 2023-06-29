@@ -116,134 +116,253 @@
             </div>
         </div>
     </section>
-    <section class="section section__info info" id="info">
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12 col-lg-6 info__text">
-                    <h2 class="title info__title">ШКОЛА ФИТНЕСА<br> «Ө-FIT»</h2>
-                    <p class="desc info__desc">
-                        Обучаем фитнес-инструкторов с нуля.<br>
-                        Диплом государственного образца.<br>
-                        Курсы. Мастер классы. Семинары, Воркшопы. Аттестация.
-                    </p>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <img data-src="/images/studenty-shkoly-fitnesa.webp" src="/images/lazy.png"
-                        alt="Студенты школы фитнеса" class="info__img">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section section__about about" id="about">
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <img data-src="/images/obuchenie-na-fitnes-trenera.webp" src="/images/lazy.png" class="about__img"
-                        alt="Обучение на фитнес тренера">
-                </div>
-                <div class="col-12 col-lg-6 about__text">
-                    <h2 class="title about__title">КОРОТКО О ШКОЛЕ ФИТНЕСА</h2>
-                    <p class="desc about__desc">
-                        <strong>ОБУЧАЙСЯ У ЛУЧШИХ!</strong>
-                        <br>
-                        <br>
-                        <strong>Школа Фитнеса «Ө-FIT»</strong> — это объединение профессионалов в области фитнес индустрии,
-                        спорта и
-                        здорового образа жизни.
-                        <br>
-                        <br>
-                        Мы приглашаем пройти обучение и получить новую профессию у лучших специалистов фитнес - индустрии.
-                        Фитнес-школа «Ө-FIT» работает как с опытными тренерами и инструкторами, так и с начинающими
-                        специалистами, предлагает гибкие системы оплаты обучения и разные программы.
-                        <br>
-                        <br>
-                        🔹 Обучение проходит на базе Башкирского института физической культуры;
-                        <br>
-                        <br>
-                        🔹 Практика проводится на базе СК «Динамо»
-                        <br>
-                        <br>
-                        🔹 По окончанию курсов выдается диплом государственного образца;
-                        <br>
-                        <br>
-                        🔹 Содействуем в трудоустройстве
-                    </p>
-                    <div class="btn btn-primary btn-lg about__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Получить консультацию</div>
+    @if(isset($info))
+        <section class="section section__info info" id="info">
+            <div class="container section__content">
+                <div class="row">
+                    <div class="col-12 col-lg-6 info__text">
+                        <h2 class="title info__title">{{$info->title}}</h2>
+                        <div class="desc info__desc">
+                            {!!$info->text!!}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <img data-src="/storage/media/infos/{{ $info->id . '/' .$info->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
+                            alt="{{$info->title}}" class="info__img">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section section__directions directions" id="directions">
-        <div class="container section__content">
-            <div class="row">
-                @if(isset($direction))
+        </section>
+    @endif
+    @if(isset($about))
+        <section class="section section__about about" id="about">
+            <div class="container section__content">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img data-src="/storage/media/about/{{ $about->id . '/' .$about->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png" class="about__img"
+                            alt="{{$about->title}}">
+                    </div>
+                    <div class="col-12 col-lg-6 about__text">
+                        <h2 class="title about__title">{{$about->title}}</h2>
+                        <div class="desc about__desc">
+                            {!!$about->text!!}
+                        </div>
+                        <div class="btn btn-primary btn-lg about__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Получить консультацию</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if(isset($direction))
+        <section class="section section__directions directions" id="directions">
+            <div class="container section__content">
+                <div class="row">
                     <div class="col-12 col-lg-6 directions__text">
                         <h2 class="title directions__title">
                             {{ $direction->title }}
                         </h2>
-                        <div class="desc directions__desc">
-                            {!! $direction->text !!}
-                        </div>
+                    <div class="desc directions__desc">
+                        {!! $direction->text !!}
+                    </div>
                     </div>
                     <div class="col-12 col-lg-6">
                         <img data-src="/storage/media/directions/{{ $direction->id . '/' .$direction->img . '.webp?=r' . rand(0, 999999) }}"
                             src="/images/lazy.png" alt="Школа фитнеса для тренеров и инструкторов" class="directions__img">
                     </div>
-                @endif
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="section section__courses courses" id="courses">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">Мы предлагаем качественное обучение
-                            по следующим курсам</h2>
+        </section>
+    @endif
+    @if(isset($courses))
+        <section class="section section__courses courses" id="courses">
+            <div class="container-fluid section__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section__title">Мы предлагаем качественное обучение
+                                по следующим курсам</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        @foreach ($courses as $course)
-                            <div class="accordion-item course">
-                                <h2 class="accordion-header" id="flush-heading-{{ $loop->iteration }}">
-                                    <button class="accordion-button collapsed accordion__title" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $loop->iteration }}"
-                                        aria-expanded="false" aria-controls="flush-collapse-{{ $loop->iteration }}">
-                                        {{ $course['title'] }}
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse "
-                                    aria-labelledby="flush-heading-{{ $loop->iteration }}"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body accordion__content">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-6">
-                                                {!! $course['text'] !!}
-                                            </div>
-                                            <div class="col-12 col-lg-6">
-                                                <img data-src="/storage/images/courses/{{ $course['id'] . '/' . $course['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                                    src="/images/lazy.png" alt="{{ $course['title'] }}"
-                                                    class="accordion__img">
+            <div class="container section__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            @foreach ($courses as $course)
+                                <div class="accordion-item course">
+                                    <h2 class="accordion-header" id="flush-heading-{{ $loop->iteration }}">
+                                        <button class="accordion-button collapsed accordion__title" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $loop->iteration }}"
+                                            aria-expanded="false" aria-controls="flush-collapse-{{ $loop->iteration }}">
+                                            {{ $course['title'] }}
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse "
+                                        aria-labelledby="flush-heading-{{ $loop->iteration }}"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion__content">
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6">
+                                                    {!! $course['text'] !!}
+                                                </div>
+                                                <div class="col-12 col-lg-6">
+                                                    <img data-src="/storage/images/courses/{{ $course['id'] . '/' . $course['img'] . '.webp?=r' . rand(0, 999999) }}"
+                                                        src="/images/lazy.png" alt="{{ $course['title'] }}"
+                                                        class="accordion__img">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
+                        <div class="courses__block">
+                            <p class="courses__desc">ТАКЖЕ, мы проводим внутриклубное обучение для фитнес-центров.<br>
+                                Программа,
+                                темы
+                                и методика курса строятся исходя из задач клуба. Кроме того, это возможность выбрать удобное
+                                время,
+                                график обучения и снизить стоимость за счёт единовременного обучения.</p>
+                        </div>
+                        <div class="col-12 banner">
+                            <p class="banner__text">Узнать подробности или записаться на курс</p>
+                            <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Получить консультацию</div>
+                        </div>
                     </div>
-                    <div class="courses__block">
-                        <p class="courses__desc">ТАКЖЕ, мы проводим внутриклубное обучение для фитнес-центров.<br>
-                            Программа,
-                            темы
-                            и методика курса строятся исходя из задач клуба. Кроме того, это возможность выбрать удобное
-                            время,
-                            график обучения и снизить стоимость за счёт единовременного обучения.</p>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if(isset($training))
+        <section class="section section__training training" id="training">
+            <div class="container-fluid section__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section__title">{{$training->title}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container section__content">
+                <div class="row">
+                    <div class="training__desc desc col-12 col-lg-6 mb-4 mb-lg-0">
+                        {!!$training->text!!}
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <img data-src="/storage/media/training/{{ $training->id . '/' .$training->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
+                            alt="{{$training->title}}" class="training__img">
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if(isset($teachers))
+        <section class="section section__teachers teachers" id="teachers">
+            <div class="container-fluid section__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section__title">Преподаватели</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container section__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider slider-teachers">
+                            @foreach($teachers as $teacher)
+                                <div class="slider__item">
+                                        <div class="slider__img">
+                                            <img data-src="/storage/images/teachers/{{ $teacher['id'] }}/{{ $teacher['img'] . '.webp?=r' . rand(0, 999999) }}"
+                                            src="/images/lazy.png" alt="{{ $teacher['fullName'] }}">
+                                        </div>
+                                        <div class="slider__content">
+                                            <h5 class="slider__title">{{ $teacher['fullName'] }}</h5>
+                                            <div class="slider__desc">{!! $teacher['desc'] !!}</div>
+                                        </div>
+                                        <a href="/teachers/{{Str::slug($teacher['fullName'], '-')}}" target="_blank" class="slider__link"></a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if(isset($employment))
+        <section class="section section__employment employment" id="employment">
+            <div class="container-fluid section__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section__title">СОДЕЙСТВИЕ В ТРУДОУСТРОЙСТВЕ</h2>
+                        </div>
+                        <div class="col-12">
+                            <p class="section__desc">
+                                Мы не только обучаем тренеров, но и содействуем в дальнейшем трудоустройстве.<br>
+                                Мы сотрудничаем с фитнес-клубами города и приглашаем их представителей на выпускные занятия и
+                                экзамены для выбора кандидатов на трудоустройство.<br>
+                                Также, проходя практику, у вас есть возможность присмотреться к клубу и проявить себя, как
+                                потенциального сотрудника.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section__content container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="slider slider-employment">
+                            @foreach ($employment as $slide)
+                                <div class="slider__item p-0">
+                                    <div class="slider__media">
+                                        @if (empty($slide['video']))
+                                            <img data-src="/storage/media/employment/{{ $slide['id'] }}/{{ $slide['img'] . '.webp?=r' . rand(0, 999999) }}"
+                                            src="/images/lazy.png" alt="{{ $slide['name'] }}">
+                                        @else
+                                            <video width="100%" height="100%" controls>
+                                                <source
+                                                    src="/storage/media/employment/{{ $slide['id'] }}/{{ $slide['video'] }}.mp4"
+                                                    type="video/mp4">
+                                                Ваш браузер, не поддерживает видео.
+                                            </video>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    @endif
+    @if(isset($reason))
+        <section class="section section__reasons reasons" id="reasons">
+            <div class="container-fluid section__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="section__title">{{$reason->title}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container section__content">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="desc reasons__desc">
+                            {!!$reason->text!!}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-3">
+                        <img data-src="/storage/media/reasons/{{ $reason->id . '/' . $reason->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
+                            alt="Студенты школы фитнеса и Анисимов Степан" class="reasons__img">
                     </div>
                     <div class="col-12 banner">
                         <p class="banner__text">Узнать подробности или записаться на курс</p>
@@ -252,148 +371,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section section__training training" id="training">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">ДЛЯ КОГО ОБУЧЕНИЕ</h2>
-                        <p class="section__desc">
-                            - тренер с нуля<br>
-                            - повышение квалификации практикующего тренера<br>
-                            - расширение тренерского профиля<br>
-                            - для эффективных самостоятельных тренировок </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                    <img data-src="/images/provoditsya-zaniyatie-v-fitnes-shkole.webp" src="/images/lazy.png"
-                        alt="Проводятся занятия в фитнес школе" class="training__img">
-                </div>
-                <div class="col-12 col-lg-6">
-                    <img data-src="/images/sertifikat-uchastnika-master-klassa.webp" src="/images/lazy.png"
-                        alt="Сертификат участника мастер класса" class="training__img">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section section__teachers teachers" id="teachers">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">Преподаватели</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12">
-                    <div class="slider slider-teachers">
-                        @foreach($teachers as $teacher)
-                            <div class="slider__item">
-                                    <div class="slider__img">
-                                        <img data-src="/storage/images/teachers/{{ $teacher['id'] }}/{{ $teacher['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                        src="/images/lazy.png" alt="{{ $teacher['fullName'] }}">
-                                    </div>
-                                    <div class="slider__content">
-                                        <h5 class="slider__title">{{ $teacher['fullName'] }}</h5>
-                                        <div class="slider__desc">{!! $teacher['desc'] !!}</div>
-                                    </div>
-                                    <a href="/teachers/{{Str::slug($teacher['fullName'], '-')}}" target="_blank" class="slider__link"></a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section section__employment employment" id="employment">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">СОДЕЙСТВИЕ В ТРУДОУСТРОЙСТВЕ</h2>
-                    </div>
-                    <div class="col-12">
-                        <p class="section__desc">
-                            Мы не только обучаем тренеров, но и содействуем в дальнейшем трудоустройстве.<br>
-                            Мы сотрудничаем с фитнес-клубами города и приглашаем их представителей на выпускные занятия и
-                            экзамены для выбора кандидатов на трудоустройство.<br>
-                            Также, проходя практику, у вас есть возможность присмотреться к клубу и проявить себя, как
-                            потенциального сотрудника.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section__content container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="slider slider-employment">
-                        @foreach ($employment as $slide)
-                            <div class="slider__item p-0">
-                                <div class="slider__media">
-                                    @if (empty($slide['video']))
-                                        <img data-src="/storage/media/employment/{{ $slide['id'] }}/{{ $slide['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                        src="/images/lazy.png" alt="{{ $slide['name'] }}">
-                                    @else
-                                        <video width="100%" height="100%" controls>
-                                            <source
-                                                src="/storage/media/employment/{{ $slide['id'] }}/{{ $slide['video'] }}.mp4"
-                                                type="video/mp4">
-                                            Ваш браузер, не поддерживает видео.
-                                        </video>
-                                    @endif
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-    <section class="section section__reasons reasons" id="reasons">
-        <div class="container-fluid section__header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="section__title">5 ПРИЧИН ОБУЧАТЬСЯ В НАШЕЙ ШКОЛЕ ФИТНЕСА</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container section__content">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <p class="desc reasons__desc">
-                        1. Диплом государственного образца<br>
-                        2. Качественный преподавательский состав<br>
-                        3. Максимум практики и концентрированная теория, с возможностью расширять знания на
-                        мастер-классах<br>
-                        4. Гибкая система оплаты (рассрочка, программа лояльности)<br>
-                        5. Перспективы трудоустройства
-                    </p>
-                </div>
-                <div class="col-12 col-lg-6 mb-3">
-                    <img data-src="/images/studenty-shkoly-fitnesa-i-anisimov-stepan.webp" src="/images/lazy.png"
-                        alt="Студенты школы фитнеса и Анисимов Степан" class="reasons__img">
-                </div>
-                <div class="col-12 banner">
-                    <p class="banner__text">Узнать подробности или записаться на курс</p>
-                    <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Получить консультацию</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <footer class="footer container-fluid" id="footer">
         <div class="container">
             <h5 class="footer__title">Контакты</h5>

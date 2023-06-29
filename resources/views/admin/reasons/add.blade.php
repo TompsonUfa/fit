@@ -1,6 +1,6 @@
 @extends('admin.index')
 
-@section('title', 'Панель администратора | Редактировать запись')
+@section('title', 'Панель администратора | Добавить запись')
 
 @section('content')
     <div class="row-12">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="panel__title mb-3">
-                        Редактировать запись
+                        Добавить запись
                     </h2>
                 </div>
             </div>
@@ -18,8 +18,7 @@
                     <div class="col-12 text-center mb-3">
                         <div class="col-12">
                             <div class="file-input">
-                                <img class="prev-img mb-3"
-                                src="/storage/media/about/{{ $item->id }}/{{ Str::slug($item->img) . '.webp?=r' . rand(0, 999999) }}">
+                                <img class="prev-img mb-3 d-block" src="/images/no-image.webp">
                                 <p class="prev-name mb-3"></p>
                                 <input type="file" id="image" name="image" class="file"
                                     accept=".jpg,.png,.jpeg,.gif,.webp,.svg">
@@ -34,11 +33,7 @@
                             <label class="input-group-text" for="inputGroupSelect01">Город</label>
                             <select name="city" class="form-select" id="inputGroupSelect01">
                                 @foreach ($cities as $city)
-                                    @if($item->city_id == $city->id)
-                                        <option selected value={{$city->id}}>{{$city->name}}</option>
-                                    @else
-                                        <option value={{$city->id}}>{{$city->name}}</option>
-                                    @endif
+                                    <option value={{$city->id}}>{{$city->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -46,16 +41,16 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="exampleInputTitle" class="form-label">Заголовок</label>
-                            <input type="text" name="title" value="{{$item->title}}" class="form-control"
+                            <input type="text" name="title" value="{{ old('title') }}" class="form-control"
                                 id="exampleInputTitle">
                         </div>
                     </div>
                     <div class="col-12">
                         <label class="form-label">Текст</label>
-                        <textarea class="wysiwyg" id="wysiwyg" name="text">{{$item->text}}</textarea>
+                        <textarea class="wysiwyg" id="wysiwyg" name="text">{{ old('text') }}</textarea>
                     </div>
                 </div>
-                <button class="btn btn-success panel__btn" type="submit">Сохранить</button>
+                <button class="btn btn-success panel__btn" type="submit">Создать</button>
             </form>
         </div>
 

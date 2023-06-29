@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('reasons', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('title');
             $table->text('text');
             $table->string('img');
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->index('city_id', 'about_city_idx');
-            $table->foreign('city_id', 'about_city_fk')->on('cities')->references('id')->onDelete('cascade');
+            $table->index('city_id', 'reason_city_idx');
+            $table->foreign('city_id', 'reason_city_fk')->on('cities')->references('id')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('about');
+        Schema::dropIfExists('reasons');
     }
 };

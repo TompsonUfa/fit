@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InfosRequest extends FormRequest
+class ReasonsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class InfosRequest extends FormRequest
             'title' => 'required|min:5',
             'text' => 'required|min:15',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,webp,svg|max:2048|',
-            'city' => 'required|unique:infos,city_id'
+            'city' => 'required|unique:reasons,city_id'
         ];
     }
 }

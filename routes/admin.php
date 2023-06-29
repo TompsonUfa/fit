@@ -14,6 +14,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\ReasonsController;
 
 Route::get('/', function () {
     return redirect('/admin/directions');
@@ -39,6 +40,13 @@ Route::get('/training/add', [TrainingController::class, 'add']);
 Route::post('/training/add', [TrainingController::class, 'add_']);
 Route::get('/training/edit/{id}', [TrainingController::class, 'edit']);
 Route::post('/training/edit/{id}', [TrainingController::class, 'edit_']);
+
+Route::get('/reasons', [ReasonsController::class, 'show'])->name('admin.reasons');
+Route::post('/reasons', [ReasonsController::class, 'delete']);
+Route::get('/reasons/add', [ReasonsController::class, 'add']);
+Route::post('/reasons/add', [ReasonsController::class, 'add_']);
+Route::get('/reasons/edit/{id}', [ReasonsController::class, 'edit']);
+Route::post('/reasons/edit/{id}', [ReasonsController::class, 'edit_']);
 
 Route::get('/directions', [DirectionsController::class, 'show'])->name('admin.directions');
 Route::post('/directions', [DirectionsController::class, 'delete']);

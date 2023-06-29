@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Services\MainServices;
+use App\Services\DomainServices;
 
 class MainController extends Controller
 {
-    public function show(MainServices $service)
+    public function show(DomainServices $domainService, MainServices $service)
     {
-        $domain = $service->getDomain();
-        $data = $service->getData($domain);
+        $domain = $domainService->getDomain();
+        $dataDomain = $domainService->getData($domain);
+        $data = $service->getData($dataDomain);
         return view('home', $data);
     }
 }
