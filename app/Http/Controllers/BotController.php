@@ -28,9 +28,9 @@ class BotController extends Controller
         }
 
         $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
-
+        // $sendToTelegram = true;
         if ($sendToTelegram) {
-            return response()->json(['success' => 'Ваше сообщение отправлено, скоро с вами свяжется специалист.']);
+            return response()->json(['success' => 'Ваша заявка принята, скоро с вами свяжется менеджер.']);
         } else {
             return response()->json(['errors' => 'Ваше сообщение не отправлено, попробуйте снова']);
         }

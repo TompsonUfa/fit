@@ -82,10 +82,19 @@ document.addEventListener('DOMContentLoaded', function () {
             success: function (response) {
                 const inputs = form.querySelectorAll(".form-control"),
                     modal = bootstrap.Modal.getInstance(m);
+                const alert = document.querySelector('.alert');
+                let message = alert.querySelector('.alert__message');
                 modal.hide();
                 for (let i = 0; i < inputs.length; i++) {
                     inputs[i].value = "";
                 }
+                alert.classList.add('d-flex');
+                alert.classList.remove('d-none');
+                setTimeout( function() {
+                    alert.classList.remove('d-flex');
+                    alert.classList.add('d-none');
+                }, 3000);
+                message.innerText = response.success;
             },
             error: function (response) {
                 console.log(response)
