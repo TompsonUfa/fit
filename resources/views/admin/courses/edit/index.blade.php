@@ -56,6 +56,41 @@
                         </div>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDesc" class="form-label">Краткое описание курса</label>
+                            <input type="text" name="desc" value="{{ $course->desc }}" class="form-control"
+                                id="exampleInputDesc">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputTime" class="form-label">Длительность (Кол-во месяцев)</label>
+                            <select id="exampleInputTime" class="form-select" name="time" aria-label="Default select example">
+                                @for ($i = 1; $i <= 10; $i++)
+                                    @if($course->time == $i)
+                                        <option value="{{$i}}" selected>{{$i}}</option>
+                                    @else               
+                                        <option value="{{$i}}">{{$i}}</option>       
+                                    @endif
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputPrice" class="form-label">Цена</label>
+                            <input type="text" name="price" value="{{ $course->price }}" class="form-control form-control_number"
+                                id="exampleInputPrice">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDate" class="form-label">Старт обучения</label>
+                            <input class="form-control" type="date" name="date" value="{{$course->date != null ? date('Y-m-d', strtotime($course->date)) : '' }}" 
+                            id="exampleInputDate">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{ $course->text }}</textarea>
                     </div>
                 </div>

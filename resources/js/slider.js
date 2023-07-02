@@ -1,5 +1,29 @@
 import 'slick-carousel'
 document.addEventListener('DOMContentLoaded', function(){
+  let sliderIsLive = false;
+  const createSliderCourses = () => {
+    if (window.innerWidth <= 770) {
+      if (!sliderIsLive) {
+        $(".slider-courses").slick({
+          dots: false,
+          swipe: true,
+          variableWidth: true,
+          focusOnSelect: true,
+          infinite: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        });
+        sliderIsLive = true;
+      }
+    }
+    else {
+      if (sliderIsLive) {
+        $(".slider-courses").slick('unslick');
+        sliderIsLive = false;
+      }
+    }
+  }
+
   $(".slider-employment").slick({
     dots: true,
     prevArrow: '<button class="slider__btn slider__btn_prev"><svg width="64px" height="64px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ff8080" stroke="#ff8080"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z" fill="#ff8080"></path></g></svg></button>',
@@ -73,5 +97,12 @@ document.addEventListener('DOMContentLoaded', function(){
           }
       ]
   });
+
+  createSliderCourses();
+
+  window.addEventListener("resize", () => {
+    createSliderCourses();
+  })
+
 })
 

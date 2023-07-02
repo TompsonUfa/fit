@@ -186,62 +186,59 @@
                     </div>
                 </div>
             </div>
-            <div class="container section__content">
+            <div class="container py-4 section__content">
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        <div class="courses__tabs tabs">
-                            <div class="tabs__item tabs__item_active">
-                                <div class="tabs__top">1</div>
-                                <div class="tabs__desc">ИНСТРУКТОР ТРЕНАЖЕРНОГО ЗАЛА</div>
-                            </div>
-                            <div class="tabs__item">
-                                <div class="tabs__top">2</div>
-                                <div class="tabs__desc">ИНСТРУКТОР ТРЕНАЖЕРНОГО ЗАЛА</div>
-                            </div>
-                            <div class="tabs__item">
-                                <div class="tabs__top">3</div>
-                                <div class="tabs__desc">ИНСТРУКТОР ТРЕНАЖЕРНОГО ЗАЛА</div>
-                            </div>
-                            <div class="tabs__item">
-                                <div class="tabs__top">4</div>
-                                <div class="tabs__desc">ИНСТРУКТОР ТРЕНАЖЕРНОГО ЗАЛА</div>
-                            </div>
+                        <div class="courses__tabs-nav tabs-nav slider-courses">
+                            @foreach($courses as $course)
+                                <div class="tabs-nav__item {{ $loop->index + 1 == 1 ? 'tabs-nav__item_active' : ''}}" data-tab-id="{{ $loop->index + 1}}">
+                                    <div class="tabs-nav__top">{{ $loop->index + 1 }}</div>
+                                    <div class="tabs-nav__desc">{{ $course->title }}</div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-12 col-lg-6">
-                        
-                    </div>
-                    <div class="col-12">
-                        {{-- <div class="accordion accordion-flush" id="accordionFlushExample">
-                            @foreach ($courses as $course)
-                                <div class="accordion-item course">
-                                    <h2 class="accordion-header" id="flush-heading-{{ $loop->iteration }}">
-                                        <button class="accordion-button collapsed accordion__title" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $loop->iteration }}"
-                                            aria-expanded="false" aria-controls="flush-collapse-{{ $loop->iteration }}">
-                                            {{ $course['title'] }}
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapse-{{ $loop->iteration }}" class="accordion-collapse collapse "
-                                        aria-labelledby="flush-heading-{{ $loop->iteration }}"
-                                        data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body accordion__content">
-                                            <div class="row">
-                                                <div class="col-12 col-lg-6">
-                                                    {!! $course['text'] !!}
-                                                </div>
-                                                <div class="col-12 col-lg-6">
-                                                    <img data-src="/storage/images/courses/{{ $course['id'] . '/' . $course['img'] . '.webp?=r' . rand(0, 999999) }}"
-                                                        src="/images/lazy.png" alt="{{ $course['title'] }}"
-                                                        class="accordion__img">
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="courses__tabs tabs">
+                            @foreach($courses as $course)
+                                <div class="tabs__item" id="{{ $loop->index + 1 }}">
+                                    <h6 class="tabs__title mb-4">{{ $course->title }}</h6>
+                                    <div class="tabs__time">Длительность: 
+                                        <span>
+                                            @if($course->time == 1)
+                                                {{ $course->time }} месяц
+                                            @elseif($course->time < 5)
+                                                {{ $course->time }} месяца
+                                            @else 
+                                                {{ $course->time }} месяцев
+                                            @endif
+                                        </span>
                                     </div>
+                                    @if($course->date)
+                                        <div class="tabs__start">Старт обучения: 
+                                            <span>
+                                                {{ \Carbon\Carbon::parse($course->date)->locale('ru')->translatedFormat('d F Y') }}
+                                            </span>
+                                        </div>
+                                    @endif
+                                    <div class="tabs__desc my-4">
+                                        {{ $course->desc }}
+                                    </div>
+                                    <div class="tabs__price price">
+                                        @if(isset($course->old_price))
+                                            <del class="price__old"> {{ $course->old_price }} руб</del>  
+                                        @endif
+                                        <div class="price__new">{{ $course->price }} руб</div>
+                                    </div>
+                                    <a href="" class="btn btn-primary tabs__btn">
+                                        Подробнее
+                                    </a>
                                 </div>
                             @endforeach
-                        </div> --}}
-                        <div class="courses__block">
+                        </div>
+                    </div>
+                    <div class="col-12 pt-4">
+                        <div class="courses__block mb-4">
                             <p class="courses__desc">ТАКЖЕ, мы проводим внутриклубное обучение для фитнес-центров.<br>
                                 Программа,
                                 темы

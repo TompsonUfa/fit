@@ -16,6 +16,12 @@ class PageCourse extends Model
         'title',
         'text',
         'img',
+        'city_id',
+        'time',
+        'date',
+        'desc',
+        'old_price',
+        'price',
     ];
     public function city()
     {

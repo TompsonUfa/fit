@@ -15,3 +15,4 @@ import './style-input'
 import './editor'
 import './slider'
 import './lazy';
+import './tab'

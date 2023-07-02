@@ -46,6 +46,45 @@
                         </div>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDesc" class="form-label">Краткое описание курса</label>
+                            <input type="text" name="desc" value="{{ old('desc') }}" class="form-control"
+                                id="exampleInputDesc">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputTime" class="form-label">Длительность (Кол-во месяцев)</label>
+                            <select id="exampleInputTime" class="form-select" name="time" aria-label="Default select example">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputPrice" class="form-label">Цена</label>
+                            <input type="text" name="price" value="{{ old('title') }}" class="form-control form-control_number"
+                                id="exampleInputPrice">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputDate" class="form-label">Старт обучения</label>
+                            <input type="date" name="date" class="form-control" id="exampleInputDate">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <textarea class="wysiwyg" id="wysiwyg" name="text">{{ old('text') }}</textarea>
                     </div>
                 </div>
