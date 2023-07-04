@@ -62,11 +62,13 @@ p {
         .contact__item {
             display: table;
             text-align: center;
-            a {
+            a,
+            div {
+                cursor: pointer;
                 display: table-cell;
                 vertical-align: middle;
                 color: #fff !important;
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: 600;
                 border-width: 1px;
                 border-radius: 9px;
@@ -74,7 +76,7 @@ p {
                 border-style: solid;
                 transition: background-color 0.3s ease-in-out,
                     color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-                padding: 0 15px;
+                padding: 0 10px;
                 &:hover {
                     border-color: #fff;
                 }

@@ -10,9 +10,9 @@ class DomainServices
     {
         return request()->getHttpHost();
     }
-    public function getData($domain)
+    public function getData($id)
     {
-        $city = Cities::where('domain', $domain);
+        $city = Cities::where('id', $id);
         $cityId = $city->value('id');
         $cityDesc = $city->value('desc');
         $cityKeyWords = $city->value('keywords');

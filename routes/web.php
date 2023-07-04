@@ -13,7 +13,7 @@ Route::get('block', [UsersController::class, 'block'])->name('block');
 
 Route::get('logs', [LogViewerController::class, 'index']);
 
-Route::get('/', [MainController::class, 'show']);
+Route::get('/{fr?}', [MainController::class, 'show']);
 Route::post('/', [BotController::class, 'post']);
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');

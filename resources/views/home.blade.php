@@ -23,6 +23,9 @@
                                 <li class="contact__item">
                                     <a href="tel:+79375810088">+7 (937) 581-00-88</a>
                                 </li>
+                                <li class="contact__item">
+                                    <div class="contact__city" data-bs-toggle="modal" data-bs-target="#exampleModal3">{{$cityName}}</div>
+                                </li>
                             </ul>
                             <ul class="header__social social px-sm-5 d-sm-flex">
                                 <li class="social__item">
@@ -597,6 +600,28 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade city" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div type="button" class="btn_close" data-bs-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" class="bi bi-x" viewBox="0 0 16 16">
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title mb-3" id="exampleModalLabel2">Выберите свой город</h4>
+                    <ul class="city__list">
+                        @foreach($cities as $city)
+                            <li class="city__item"><a href="?_fr={{$city->id}}">{{$city->name}}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div class="modal-footer">
                 </div>

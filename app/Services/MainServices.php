@@ -19,11 +19,21 @@ class MainServices
     {
         return request()->getHttpHost();
     }
-    public function getData($domain)
+    public function getData($fr)
     {
-        $cityId = $domain['cityId'];
-        $cityDesc = $domain['cityDesc'];
-        $cityKeyWords = $domain['cityKeyWords'];
+        if (isset($fr)) {
+            $selectedSity = Cities::where('id', $fr)->first();
+            if (empty($selectedSity)) {
+                $selectedSity = Cities::where('name', "Уфа")->first();
+            };
+        } else {
+            $selectedSity = Cities::where('name', "Уфа")->first();
+        }
+
+        $cityId = $selectedSity['id'];
+        $cityName = $selectedSity['name'];
+        $cityDesc = $selectedSity['desc'];
+        $cityKeyWords = $selectedSity['keywords'];
 
         $info = Info::where('city_id', $cityId)->first();
         $about = About::where('city_id', $cityId)->first();
@@ -34,14 +44,15 @@ class MainServices
         $employment = Employment::where('city_id', $cityId)->orderBy('id', 'desc')->get();
         $contact = Contact::where('city_id', $cityId)->first();
         $direction = Direction::where('city_id', $cityId)->first();
+        $sities = Cities::all();
 
         return [
-            'info' => $info, 'about' => $about, 
+            'info' => $info, 'about' => $about,
             'training' => $training, 'reason' => $reason,
-            'cityDesc' => $cityDesc, 'cityKeyWords' => $cityKeyWords,
+            'cityName' => $cityName, 'cityDesc' => $cityDesc, 'cityKeyWords' => $cityKeyWords,
             'courses' => $courses, 'teachers' => $teachers,
             'employment' => $employment, 'direction' => $direction,
-            'contact' => $contact,
+            'contact' => $contact, 'cities' => $sities,
         ];
     }
 }
