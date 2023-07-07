@@ -13,7 +13,6 @@ Route::get('block', [UsersController::class, 'block'])->name('block');
 
 Route::get('logs', [LogViewerController::class, 'index']);
 
-Route::get('/{fr?}', [MainController::class, 'show']);
 Route::post('/', [BotController::class, 'post']);
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
@@ -45,3 +44,5 @@ Route::post('/password-update', [LoginController::class, 'PasswordUpdate'])
 Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
 
 Route::get('/teachers/{name}', [TeacherController::class, 'show']);
+
+Route::get('/{fr?}', [MainController::class, 'show']);

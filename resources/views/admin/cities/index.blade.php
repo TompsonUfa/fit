@@ -34,12 +34,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 overflow-auto">
                         <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">Название города</th>
-                                    <th scope="col" class="text-center">Домен</th>
+                                    <th scope="col" class="text-center">Описание</th>
                                     <th scope="col" class="text-center">Действия</th>
                                 </tr>
                             </thead>
@@ -47,7 +47,7 @@
                                 @foreach ($cities as $city)
                                     <tr data-item-id={{ $city['id'] }}>
                                         <td class="align-middle table__title text-center">{{ $city['name'] }}</td>
-                                        <td class="align-middle table__title text-center">{{ $city['domain'] }}</td>
+                                        <td class="align-middle table__title text-center">{{ $city['desc'] }}</td>
                                         <td class="align-middle text-center">
                                             <a href="{{ url('admin/cities/edit') }}{{ '/' . $city['id'] }}"
                                                 class="table__btn table__btn_edit mx-2">

@@ -25,7 +25,6 @@ class CitiesRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
-            'domain' => 'required|max:50',
             'desc' => 'required|max:350',
             'keywords' => 'required|max:350',
         ];

@@ -24,11 +24,10 @@ class CitiesServices
         }
         return $cities;
     }
-    public function add($name, $domain, $desc, $keywords)
+    public function add($name, $desc, $keywords)
     {
         return Cities::insert([
             'name' => $name,
-            'domain' => $domain,
             'desc' => $desc,
             'keywords' => $keywords,
         ]);
@@ -43,11 +42,10 @@ class CitiesServices
         $city = Cities::find($id);
         return $city;
     }
-    public function edit($id, $name, $domain, $desc, $keywords)
+    public function edit($id, $name, $desc, $keywords)
     {
         $city = cities::find($id);
         $city->name = $name;
-        $city->domain = $domain;
         $city->desc = $desc;
         $city->keywords = $keywords;
         $city->save();

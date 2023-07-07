@@ -97,7 +97,7 @@ Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course
 Route::post('/course/edit_/{id}', [CourseController::class, 'edit_'])->name('course.edit_');
 Route::post('/course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
 
-Route::get('/cities', [CitiesController::class, 'show'])->name('admin.cities');
+Route::get('/cities', [CitiesController::class, 'show'])->name('cities');
 Route::post('/cities', [CitiesController::class, 'delete']);
 Route::get('/cities/add', [CitiesController::class, 'showAddItem']);
 Route::post('/cities/add', [CitiesController::class, 'add']);

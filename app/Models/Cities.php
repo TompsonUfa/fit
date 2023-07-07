@@ -11,7 +11,6 @@ class Cities extends Model
 
     protected $fillable = [
         'name',
-        'domain',
         'desc',
         'keywords',
     ];

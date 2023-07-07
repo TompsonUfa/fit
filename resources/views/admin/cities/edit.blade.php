@@ -23,12 +23,6 @@
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="exampleInputDomain" class="form-label">Домен</label>
-                            <input type="text" name="domain" class="form-control" id="exampleInputDomain" value="{{$city->domain}}">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="mb-3">
                             <label for="exampleInputDesc" class="form-label">Описание (SEO)</label>
                             <input type="text" name="desc" class="form-control" id="exampleInputDesc" value="{{$city->desc}}"> 
                         </div>

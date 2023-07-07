@@ -17,14 +17,10 @@
                             class="w-100 mb-xxl-2 d-flex justify-content-end justify-content-lg-between align-items-center p-0">
                             <ul class="header__contact contact d-lg-flex">
                                 <li class="contact__item">
-                                    <a href="https://yandex.ru/maps/-/CCU7Q6b5dD" target="_blank">г. Уфа, ул.
-                                        Коммунистическая, д. 67</a>
+                                    <div class="contact__city" data-bs-toggle="modal" data-bs-target="#exampleModal3">{{$cityName}}</div>
                                 </li>
                                 <li class="contact__item">
                                     <a href="tel:+79375810088">+7 (937) 581-00-88</a>
-                                </li>
-                                <li class="contact__item">
-                                    <div class="contact__city" data-bs-toggle="modal" data-bs-target="#exampleModal3">{{$cityName}}</div>
                                 </li>
                             </ul>
                             <ul class="header__social social px-sm-5 d-sm-flex">
@@ -459,6 +455,9 @@
                 </li>
                 <li class="menu__item">
                     <a href="tel:+79375810088" class="menu__link">+7 (937) 581-00-88</a>
+                </li>
+                <li class="menu__item">
+                    <a href="https://yandex.ru/maps/-/CCU7Q6b5dD" class="menu__link" target="_blank">Адрес</a>
                 </li>
                 <li class="menu__item">
                     <a href="{{ route('private') }}" class="menu__link">

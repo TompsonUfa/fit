@@ -27,14 +27,13 @@ class CitiesController extends Controller
     public function add(CitiesRequest $request, CitiesServices $service)
     {
         $name = $request->get('name');
-        $domain = $request->get('domain');
         $desc = $request->get('desc');
         $keywords = $request->get('keywords');
-        $service->add($name, $domain, $desc, $keywords);
+        $service->add($name, $desc, $keywords);
         return response()
-        ->json([
-            'url' => route('cities')
-        ]);
+            ->json([
+                'url' => route('cities')
+            ]);
     }
     public function delete(Request $request, CitiesServices $service)
     {
@@ -44,9 +43,8 @@ class CitiesController extends Controller
     public function edit($id, CitiesRequest $request, CitiesServices $service)
     {
         $name = $request->get('name');
-        $domain = $request->get('domain');
         $desc = $request->get('desc');
         $keywords = $request->get('keywords');
-        return $service->edit($id, $name, $domain, $desc, $keywords);
+        return $service->edit($id, $name, $desc, $keywords);
     }
 }
