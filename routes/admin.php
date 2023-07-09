@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InfosController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DirectionsController;
-use App\Http\Controllers\PageCourseController;
+use App\Http\Controllers\PageCoursesController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PostersController;
 use App\Http\Controllers\TeachersController;
@@ -55,12 +55,12 @@ Route::post('/directions/add', [DirectionsController::class, 'add']);
 Route::get('/directions/edit/{id}', [DirectionsController::class, 'showEditItem']);
 Route::post('/directions/edit/{id}', [DirectionsController::class, 'edit']);
 
-Route::get('/page_courses', [PageCourseController::class, 'show'])->name('admin.courses');
-Route::post('/page_courses', [PageCourseController::class, 'delete']);
-Route::get('/page_courses/add', [PageCourseController::class, 'showAddCourse']);
-Route::post('/page_courses/add', [PageCourseController::class, 'addCourse']);
-Route::get('/page_courses/edit/{id}', [PageCourseController::class, 'showEditCourse']);
-Route::post('/page_courses/edit/{id}', [PageCourseController::class, 'editCourse']);
+Route::get('/page_courses', [PageCoursesController::class, 'show'])->name('admin.courses');
+Route::post('/page_courses', [PageCoursesController::class, 'delete']);
+Route::get('/page_courses/add', [PageCoursesController::class, 'showAddCourse']);
+Route::post('/page_courses/add', [PageCoursesController::class, 'addCourse']);
+Route::get('/page_courses/edit/{id}', [PageCoursesController::class, 'showEditCourse']);
+Route::post('/page_courses/edit/{id}', [PageCoursesController::class, 'editCourse']);
 
 Route::get('/posters', [PostersController::class, 'show'])->name('admin.posters');
 Route::post('/posters', [PostersController::class, 'delete']);

@@ -24,11 +24,12 @@ class ContactsServices
         $contact = Contact::find($id);
         $contact->delete();
     }
-    public function add($city, $address, $desc)
+    public function add($city, $address, $desc, $phone)
     {
         return $contact = Contact::insert([
             'address' => $address,
             'desc' => $desc,
+            'phone' => $phone,
             'city_id' => $city,
         ]);
     }
@@ -36,7 +37,7 @@ class ContactsServices
     {
         return $contact = Contact::find($id);
     }
-    public function edit($id, $city, $address, $desc)
+    public function edit($id, $city, $address, $desc, $phone)
     {
         $contact = Contact::find($id);
 
@@ -52,7 +53,10 @@ class ContactsServices
         {
             $contact->desc = $desc;
         }
-
+        if($contact->phone != $phone)
+        {
+            $contact->phone = $phone;
+        }
         return $contact->save();
     }
 }

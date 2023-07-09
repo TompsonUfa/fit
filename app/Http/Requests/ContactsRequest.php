@@ -26,6 +26,7 @@ class ContactsRequest extends FormRequest
         return [
             'address' => 'required',
             'desc' => 'required',
+            'phone' => 'required',
             'city' => 'required|unique:contacts,city_id'
         ];
     }

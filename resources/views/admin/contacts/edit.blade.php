@@ -38,6 +38,13 @@
                         <textarea class="wysiwyg" id="wysiwyg" name="address">{{ $contact->address }}</textarea>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3">
+                            <label for="exampleInputPhone" class="form-label">Телефон</label>
+                            <input type="text" name="phone" class="form-control" id="exampleInputPhone"
+                                value="{{ $contact->phone }}">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <label for="wysiwygTwo" class="form-label mb-3">Описание</label>
                         <textarea class="wysiwyg" id="wysiwygTwo" name="desc">{{ $contact->desc }}</textarea>
                     </div>

@@ -42,6 +42,11 @@ class CitiesServices
         $city = Cities::find($id);
         return $city;
     }
+    public function findByName($name)
+    {
+        $city = Cities::where('name', $name)->first();
+        return $city;
+    }
     public function edit($id, $name, $desc, $keywords)
     {
         $city = cities::find($id);

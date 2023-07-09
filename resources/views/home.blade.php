@@ -19,9 +19,11 @@
                                 <li class="contact__item">
                                     <div class="contact__city" data-bs-toggle="modal" data-bs-target="#exampleModal3">{{$cityName}}</div>
                                 </li>
-                                <li class="contact__item">
-                                    <a href="tel:+79375810088">+7 (937) 581-00-88</a>
-                                </li>
+                                @if(isset($contact))
+                                    <li class="contact__item">
+                                        <a href="tel:{{$contact->phone}}">  {{$contact->phone}}</a>
+                                    </li>
+                                @endif
                             </ul>
                             <ul class="header__social social px-sm-5 d-sm-flex">
                                 <li class="social__item">
@@ -173,7 +175,7 @@
             </div>
         </section>
     @endif
-    @if(isset($courses))
+    @if(isset($courses) && count($courses) > 0)
         <section class="section section__courses courses" id="courses">
             <div class="container-fluid section__header">
                 <div class="container">
@@ -229,7 +231,7 @@
                                         @endif
                                         <div class="price__new">{{ $course->price }} руб</div>
                                     </div>
-                                    <a href="" class="btn btn-primary tabs__btn">
+                                    <a href="/courses/{{$course->id}}" class="btn btn-primary tabs__btn">
                                         Подробнее
                                     </a>
                                 </div>
@@ -255,31 +257,38 @@
             </div>
         </section>
     @endif
-    @if(isset($training))
-        <section class="section section__training training" id="training">
+    @if(isset($reason))
+        <section class="section section__reasons reasons" id="reasons">
             <div class="container-fluid section__header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="section__title">{{$training->title}}</h2>
+                            <h2 class="section__title">{{$reason->title}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container section__content">
                 <div class="row">
-                    <div class="training__desc desc col-12 col-lg-6 mb-4 mb-lg-0">
-                        {!!$training->text!!}
-                    </div>
                     <div class="col-12 col-lg-6">
-                        <img data-src="/storage/media/training/{{ $training->id . '/' .$training->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
-                            alt="{{$training->title}}" class="training__img">
+                        <div class="desc reasons__desc">
+                            {!!$reason->text!!}
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-3">
+                        <img data-src="/storage/media/reasons/{{ $reason->id . '/' . $reason->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
+                            alt="Студенты школы фитнеса и Анисимов Степан" class="reasons__img">
+                    </div>
+                    <div class="col-12 banner">
+                        <p class="banner__text">Узнать подробности или записаться на курс</p>
+                        <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Получить консультацию</div>
                     </div>
                 </div>
             </div>
         </section>
     @endif
-    @if(isset($teachers))
+    @if(isset($teachers)  && count($teachers) > 0)
         <section class="section section__teachers teachers" id="teachers">
             <div class="container-fluid section__header">
                 <div class="container">
@@ -313,7 +322,7 @@
             </div>
         </section>
     @endif
-    @if(isset($employment))
+    @if(isset($employment) && count($employment) > 0)
         <section class="section section__employment employment" id="employment">
             <div class="container-fluid section__header">
                 <div class="container">
@@ -361,32 +370,25 @@
             </div>
         </section>
     @endif
-    @if(isset($reason))
-        <section class="section section__reasons reasons" id="reasons">
+    @if(isset($training))
+        <section class="section section__training training" id="training">
             <div class="container-fluid section__header">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="section__title">{{$reason->title}}</h2>
+                            <h2 class="section__title">{{$training->title}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container section__content">
                 <div class="row">
+                    <div class="training__desc desc col-12 col-lg-6 mb-4 mb-lg-0">
+                        {!!$training->text!!}
+                    </div>
                     <div class="col-12 col-lg-6">
-                        <div class="desc reasons__desc">
-                            {!!$reason->text!!}
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 mb-3">
-                        <img data-src="/storage/media/reasons/{{ $reason->id . '/' . $reason->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
-                            alt="Студенты школы фитнеса и Анисимов Степан" class="reasons__img">
-                    </div>
-                    <div class="col-12 banner">
-                        <p class="banner__text">Узнать подробности или записаться на курс</p>
-                        <div class="btn btn-primary banner__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Получить консультацию</div>
+                        <img data-src="/storage/media/training/{{ $training->id . '/' .$training->img . '.webp?=r' . rand(0, 999999) }}" src="/images/lazy.png"
+                            alt="{{$training->title}}" class="training__img">
                     </div>
                 </div>
             </div>
@@ -429,8 +431,8 @@
                     </a>
                 </li>
                 <li class="menu__item">
-                    <a href="#training" class="menu__link">
-                        Для кого обучение
+                    <a href="#reasons" class="menu__link">
+                        5 причин обучаться
                     </a>
                 </li>
                 <li class="menu__item">
@@ -444,8 +446,8 @@
                     </a>
                 </li>
                 <li class="menu__item">
-                    <a href="#reasons" class="menu__link">
-                        5 причин обучаться
+                    <a href="#training" class="menu__link">
+                        Для кого обучение
                     </a>
                 </li>
                 <li class="menu__item">
@@ -453,12 +455,16 @@
                         Контакты
                     </a>
                 </li>
-                <li class="menu__item">
-                    <a href="tel:+79375810088" class="menu__link">+7 (937) 581-00-88</a>
-                </li>
-                <li class="menu__item">
-                    <a href="https://yandex.ru/maps/-/CCU7Q6b5dD" class="menu__link" target="_blank">Адрес</a>
-                </li>
+                @if(isset($contact->phone))
+                    <li class="menu__item">
+                        <a href="tel:{{$contact->phone}}" class="menu__link">{{$contact->phone}}</a>
+                    </li>
+                @endif
+                {{-- @if(isset($contact->address))
+                    <li class="menu__item">
+                        <a href="https://yandex.ru/maps/-/CCU7Q6b5dD" class="menu__link">{{$contact->address}}</a>
+                    </li>
+                @endif --}}
                 <li class="menu__item">
                     <a href="{{ route('private') }}" class="menu__link">
                         Личный кабинет
@@ -560,9 +566,9 @@
                         <div class="questions__item">
                             <h5 class="questions__title">2. Какое направление интересно?</h5>
                             <div class="answers">
-                                <div class="btn answers__item">Тренажерный зал</div>
-                                <div class="btn answers__item">Групповые программы</div>
-                                <div class="btn answers__item">Детский фитнес</div>
+                                @foreach($courses as $course)
+                                    <div class="btn answers__item">{{$course->title}}</div>
+                                @endforeach
                                 <div class="answers__item answers__item_input ">
                                     <div class="wrapper-control ">
                                         <input type="text" class="form-control" data-text-input
@@ -618,7 +624,7 @@
                     <h4 class="modal-title mb-3" id="exampleModalLabel2">Выберите свой город</h4>
                     <ul class="city__list">
                         @foreach($cities as $city)
-                            <li class="city__item"><a href="?_fr={{$city->id}}">{{$city->name}}</a></li>
+                            <li class="city__item"><a href="?_fr={{$city->id}}" data-city-id={{$city->id}}>{{$city->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>

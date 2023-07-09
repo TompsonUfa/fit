@@ -47,4 +47,9 @@ class CitiesController extends Controller
         $keywords = $request->get('keywords');
         return $service->edit($id, $name, $desc, $keywords);
     }
+    public function createCookie(Request $request)
+    {
+        $cookie = cookie('city', $request->cityId, 60);
+        return response('success')->cookie($cookie);
+    }
 }

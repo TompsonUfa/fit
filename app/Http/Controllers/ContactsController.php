@@ -26,7 +26,8 @@ class ContactsController extends Controller
         $city = $request->get('city');
         $address = $request->get('address');
         $desc = $request->get('desc');
-        $contact = $service->add($city, $address, $desc);
+        $phone = $request->get('phone');
+        $contact = $service->add($city, $address, $desc, $phone);
 
         if ($contact) {
             return response()
@@ -52,6 +53,7 @@ class ContactsController extends Controller
         $city = $request->get('city');
         $address = $request->get('address');
         $desc = $request->get('desc');
+        $phone = $request->get('phone');
 
         if ($contact['city_id'] == $city) {
             $cityValid = 'required';
@@ -65,7 +67,7 @@ class ContactsController extends Controller
             'city' => $cityValid
         ]);
 
-        $edit = $service->edit($id, $city, $address, $desc);
+        $edit = $service->edit($id, $city, $address, $desc, $phone);
         if ($edit) {
             return response()->json(['url' => route('admin.contacts')]);
         }

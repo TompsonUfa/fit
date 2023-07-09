@@ -6,6 +6,10 @@ use App\Http\Controllers\PollitikaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CitiesController;
+use App\Http\Controllers\PageCoursesController;
+use App\Http\Controllers\PageCourseController;
+
 use Illuminate\Support\Facades\Route;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
@@ -45,4 +49,8 @@ Route::get('/politika-konfidencialnosti', [PollitikaController::class, 'show']);
 
 Route::get('/teachers/{name}', [TeacherController::class, 'show']);
 
+Route::get('/courses/{id}', [PageCourseController::class, 'show']);
+
 Route::get('/{fr?}', [MainController::class, 'show']);
+
+Route::post('/city', [CitiesController::class, 'createCookie']);

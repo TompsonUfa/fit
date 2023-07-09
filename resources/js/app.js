@@ -1,4 +1,5 @@
 import './bootstrap';
+import './city';
 import './toggle-menu';
 import './scroll';
 import './toggle-answer'

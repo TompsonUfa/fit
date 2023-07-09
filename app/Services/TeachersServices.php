@@ -3,26 +3,18 @@
 namespace App\Services;
 
 use App\Models\teacher;
+use App\Models\Cities;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class TeachersServices
 {
-    public function getTeacher($domain, $name)
+    public function getTeacher($cityId, $name)
     {
-        $cityId = $domain['cityId'];
-        $cityDesc = $domain['cityDesc'];
-        $cityKeyWords = $domain['cityKeyWords'];
-        
         $teacher = teacher::where('slug', $name)
-            ->where('city_id',$cityId)
+            ->where('city_id', $cityId)
             ->firstOrFail();
-
-        return [
-            'cityDesc' => $cityDesc, 
-            'cityKeyWords' => $cityKeyWords,
-            'teacher' => $teacher,
-        ];
+        return $teacher;
     }
 }

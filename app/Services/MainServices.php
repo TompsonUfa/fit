@@ -19,7 +19,7 @@ class MainServices
     {
         return request()->getHttpHost();
     }
-    public function getData($fr)
+    public function getData($fr, $mainCity)
     {
         if (isset($fr)) {
             $selectedSity = Cities::where('id', $fr)->first();
@@ -36,14 +36,44 @@ class MainServices
         $cityKeyWords = $selectedSity['keywords'];
 
         $info = Info::where('city_id', $cityId)->first();
+        if(empty($info)){
+            $info = Info::where('city_id', $mainCity->id)->first();
+        }
+
         $about = About::where('city_id', $cityId)->first();
+        if(empty($about)){
+            $about = About::where('city_id', $mainCity->id)->first();
+        }
+
         $training = Training::where('city_id', $cityId)->first();
+        if(empty($training)){
+            $training = Training::where('city_id', $mainCity->id)->first();
+        }
+
         $reason = Reason::where('city_id', $cityId)->first();
+        if(empty($reason)){
+            $reason = Reason::where('city_id', $mainCity->id)->first();
+        }
+
         $courses = PageCourse::where('city_id', $cityId)->get();
+        if(Count($courses) == 0){
+            $courses = PageCourse::where('city_id', $mainCity->id)->get();
+        }
+
         $teachers = Teacher::where('city_id', $cityId)->get();
+
         $employment = Employment::where('city_id', $cityId)->orderBy('id', 'desc')->get();
+        if(Count($employment) == 0){
+            $employment = Employment::where('city_id', $mainCity->id)->get();
+        }
+
         $contact = Contact::where('city_id', $cityId)->first();
+
         $direction = Direction::where('city_id', $cityId)->first();
+        if(empty($direction)){
+            $direction = Direction::where('city_id', $mainCity->id)->first();
+        }
+        
         $sities = Cities::all();
 
         return [
