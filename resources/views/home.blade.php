@@ -15,10 +15,17 @@
                     <div class="col-8 col-sm-10 header__content">
                         <div
                             class="w-100 mb-xxl-2 d-flex justify-content-end justify-content-lg-between align-items-center p-0">
+                            <div class="city" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1{fill:none;}</style></defs><title/><g data-name="Layer 2" id="Layer_2">
+                                    <path d="M16,29a1,1,0,0,1-.71-.29l-7.07-7a10.91,10.91,0,0,1,0-15.48,11.07,11.07,0,0,1,15.56,0,10.91,10.91,0,0,1,0,15.48l-7.07,7A1,1,0,0,1,16,29ZM16,5A9,9,0,0,0,9.63,7.62h0a8.91,8.91,0,0,0,0,12.64L16,26.59l6.37-6.33a8.91,8.91,0,0,0,0-12.64A9,9,0,0,0,16,5ZM8.93,6.91h0Z"/>
+                                    <path d="M16,19a5,5,0,1,1,5-5A5,5,0,0,1,16,19Zm0-8a3,3,0,1,0,3,3A3,3,0,0,0,16,11Z"/></g><g id="frame">
+                                    <rect class="cls-1" height="32" width="32"/></g>
+                                </svg>
+                                <div class="city__text">
+                                    {{$cityName}}
+                                </div>
+                            </div>
                             <ul class="header__contact contact d-lg-flex">
-                                <li class="contact__item">
-                                    <div class="contact__city" data-bs-toggle="modal" data-bs-target="#exampleModal3">{{$cityName}}</div>
-                                </li>
                                 @if(isset($contact))
                                     <li class="contact__item">
                                         <a href="tel:{{$contact->phone}}">  {{$contact->phone}}</a>
@@ -611,7 +618,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade city" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div type="button" class="btn_close" data-bs-dismiss="modal" aria-label="Close">
@@ -622,9 +629,9 @@
                 </div>
                 <div class="modal-body">
                     <h4 class="modal-title mb-3" id="exampleModalLabel2">Выберите свой город</h4>
-                    <ul class="city__list">
+                    <ul class="city-list">
                         @foreach($cities as $city)
-                            <li class="city__item"><a href="?_fr={{$city->id}}" data-city-id={{$city->id}}>{{$city->name}}</a></li>
+                            <li class="city-list__item"><a href="?_fr={{$city->id}}" data-city-id={{$city->id}}>{{$city->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
