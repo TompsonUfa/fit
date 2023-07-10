@@ -1,6 +1,7 @@
 @extends('layouts.page')
-
-@section('title', 'Школа фитнеса в Уфе | фитнес клуб Ө-FIT')
+@section('desc', 'Школа фитнеса «O-fit»: ' . $course['title'] . ' в г.' . $city->name)
+@section('keywords', $city->keywords . ', ' . $course['title'])
+@section('title', 'Школа фитнеса в Уфе | фитнес клуб Ө-FIT | '. $course->title)
 
 @section('content')
     <a href="/#courses" class="d-block mb-3">На главную</a>
