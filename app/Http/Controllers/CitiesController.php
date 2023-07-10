@@ -52,4 +52,8 @@ class CitiesController extends Controller
         $cookie = cookie('city', $request->cityId, 60);
         return response('success')->cookie($cookie);
     }
+    public function getCookie(Request $request)
+    {
+        return $request->cookie('city');
+    }
 }

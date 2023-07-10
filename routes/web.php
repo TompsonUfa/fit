@@ -51,6 +51,7 @@ Route::get('/teachers/{name}', [TeacherController::class, 'show']);
 
 Route::get('/courses/{id}', [PageCourseController::class, 'show']);
 
+Route::get('/city', [CitiesController::class, 'getCookie']);
 Route::get('/{fr?}', [MainController::class, 'show']);
 
 Route::post('/city', [CitiesController::class, 'createCookie']);

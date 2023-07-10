@@ -84,7 +84,7 @@ p {
         }
     }
     .city {
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         gap: 3px;
@@ -156,6 +156,11 @@ p {
 }
 .city-list {
     list-style: none;
+    padding: 0;
+    &__item {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
 }
 .header-static {
     background-color: #000;
@@ -570,11 +575,16 @@ p {
     &__item {
         margin-bottom: 15px;
     }
-    &__link {
+    &__link,
+    &__btn {
+        cursor: pointer;
         color: #ffffff;
         font-size: 21px;
         font-weight: 600;
         transition: color 0.3s ease;
+        &:hover {
+            color: var(--bs-link-hover-color);
+        }
     }
     &__close {
         cursor: pointer;

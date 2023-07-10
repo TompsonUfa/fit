@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var sidebar = document.querySelector('.sidebar');
-
+    
     function openSidebar() {
         sidebar.classList.add('sidebar_visible');
     }
@@ -11,10 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const burger = document.querySelector('.burger');
     if (burger != null) {
-        let btnClose = document.querySelector('.sidebar__btn_close');
-
+        const  btnClose = document.querySelector('.sidebar__btn_close');
+    
         burger.addEventListener('click', openSidebar);
         btnClose.addEventListener('click', closeSidebar);
+        
     }
 
 })

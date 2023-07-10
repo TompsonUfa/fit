@@ -5,7 +5,7 @@ window.addEventListener('click', function (event) {
         menu.classList.add('menu_visible')
         menu.addEventListener("animationend", showMenu);
         document.querySelector('body').classList.add('scroll-hidden');
-    } else if (event.target.classList.contains('menu__close') || event.target.classList.contains('menu') || event.target.classList.contains('menu__link')) {
+    } else if (event.target.classList.contains('menu__close') || event.target.classList.contains('menu') || event.target.classList.contains('menu__link') || event.target.classList.contains('menu__btn')) {
         menu.removeEventListener("animationend", showMenu);
         hideMenu()
         menu.classList.remove('menu_visible')

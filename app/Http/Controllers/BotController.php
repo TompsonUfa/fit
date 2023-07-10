@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\CitiesServices;
 
 class BotController extends Controller
 {
-    public function post(Request $request)
+    public function post(Request $request, CitiesServices $city)
     {
         $token = "6137521058:AAEJ7LWRwRp2TcylMIWaCKI80oXpnbX01Sk";
         $chat_id = "-1001936066262";
@@ -14,6 +15,8 @@ class BotController extends Controller
         $data = $request->data;
 
         $txt = '';
+
+        $cityId = $request->cookie('city');
 
         foreach ($data as $key => $item) {
             foreach ($item as $key => $item) {
@@ -26,7 +29,14 @@ class BotController extends Controller
                 }
             }
         }
-
+        
+        if(isset($cityId)){
+            $city = $city->find($cityId);
+            $city = $city->name;
+        } else {
+            $city = "Город не выбран";
+        }
+        $txt .= "Город: " . $city;
         $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
         // $sendToTelegram = true;
         if ($sendToTelegram) {
