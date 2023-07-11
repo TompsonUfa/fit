@@ -10,10 +10,10 @@ use App\Services\TeachersServices;
 
 class TeacherController extends Controller
 {
-    public function show (Request $request, string $name, CitiesServices $сitiesServices, TeachersServices $teachersServices)
+    public function show(Request $request, string $name, CitiesServices $сitiesServices, TeachersServices $teachersServices)
     {
         $cityId = $request->cookie('city');
-        if (isset($cityId)){
+        if (isset($cityId)) {
             $city = $сitiesServices->find($cityId);
         } else {
             $city = $сitiesServices->findByName("Уфа");

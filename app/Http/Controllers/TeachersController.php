@@ -87,6 +87,7 @@ class TeachersController extends Controller
         $teacher = teacher::find($id);
         if ($title != $teacher->fullName) {
             $teacher->fullName = $title;
+            $teacher->slug = Str::slug($title);
             $nameImg = Str::slug($title);
         } else {
             $nameImg = Str::slug($teacher->fullName);
